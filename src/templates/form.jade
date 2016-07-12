@@ -1,0 +1,84 @@
+mixin info-block()
+    span.validation-icon
+    span.tooltip-icon= htmlWebpackPlugin.options.hint_text
+    .tooltip
+    p.error-text= attributes.errortext
+    p.description= attributes.description
+
+
+mixin input(label, name, placeholder)
+    div(class=name)
+        label(for=name + "-input")= label
+        .input-block
+            input(
+                id=name + "-input",
+                type="text",
+                name="pay_form[" + name + "]",
+                placeholder=placeholder,
+                maxlength=attributes.maxlength)
+
+            +info-block(
+                errortext = 'pay_form.attributes.' + name + '.error',
+                description = attributes.description
+                )
+
+mixin form
+    form(novalidate="true", name="pay_form", action="http://localhost:3000")
+        block
+        input#pay_form_checkSum(type="hidden", name="pay_form[checkSum]", value="9d3101821da39b5e9064ac0fb45c6f035767f95b")
+        button
+            | Pay
+
+        span.cost
+
+mixin cardNumber
+    +input("Card number", "card_number", "1111 1111 1111 1111")(
+        maxlength="30",
+        errortext="Número do cartão selecionado inválido")
+
+mixin cardHolder
+    +input("Card holder", "card_holder", "John Johnson")
+
+mixin expiryDate
+    .expiry-date
+        label(for="card_exp_month-input") Expiry date
+        .input-block
+            +input("Card exp month", "card_exp_month", "MM")(
+            maxlength="2",
+            onfocus="handleInputFocus(true)",
+            onblur="handleInputFocus(false)")
+
+            span.date-separator /
+
+            +input("Card exp year", "card_exp_year", "YY")(
+            onfocus="handleInputFocus(true);",
+            onblur="handleInputFocus(false);",
+            maxlength="4")
+
+        +info-block(
+        errortext = "",
+        description = ""
+        )
+
+mixin cardCvv
+    +input("Card cvv", "card_cvv", "1234")(
+        maxlength="4",
+        description="Os 3 dígitos do número nas costas do seu cartão")
+
+mixin cpf
+    +input("CPF", "cpf", "CPF data")
+
+mixin dni
+    +input("DNI", "dni", "DNI data")
+
+mixin personalId
+    +input("Personal ID", "personal_id", "personal_id", "Personal ID")
+
+mixin address
+    +input("Address", "address", "address", "8 Banana street")
+
+mixin city
+    +input("city", "city", "city", "New York")
+
+mixin zipCode
+    +input("Zip code", "zip_code", "12345")(maxlength="5")
