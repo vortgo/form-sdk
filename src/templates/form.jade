@@ -6,7 +6,7 @@ mixin info-block()
     p.description= attributes.description
 
 
-mixin input(label, name, placeholder)
+mixin input(label, name, placeholder, value)
     div(class=name)
         label(for=name + "-input")= label
         .input-block
@@ -15,7 +15,8 @@ mixin input(label, name, placeholder)
                 type="text",
                 name="pay_form[" + name + "]",
                 placeholder=placeholder,
-                maxlength=attributes.maxlength)
+                maxlength=attributes.maxlength,
+                value=value)
 
             +info-block(
                 errortext = 'pay_form.attributes.' + name + '.error',
@@ -78,7 +79,7 @@ mixin address
     +input("Address", "address", "address", "8 Banana street")
 
 mixin city
-    +input("city", "city", "city", "New York")
+    +input("city", "city", "city", "New York", "New York")
 
 mixin zipCode
-    +input("Zip code", "zip_code", "12345")(maxlength="5")
+    +input("Zip code", "zip_code", "12345", "12345")(maxlength="5")
