@@ -25,6 +25,7 @@ export class Form extends Component {
         this.invalidFields = [];
 
         forEach(components, component => {
+            component.model.set(component.full_name, component.element.value);
             component.dirty = true;
             invoke(component, 'setValidationMark', component.isValid());
             invoke(component, 'setDirty');
