@@ -30,7 +30,7 @@ export const rules = {
         delimiter: ''
     },
     address: {
-        pattern: /^([\u00c0-\u01ffa-zA-Zа-яА-ЯёЁіІїЇєЄ'\s-]){0,100}$/,
+        pattern: /^([\u00c0-\u01ffa-zA-Zа-яА-ЯёЁіІїЇєЄ0-9'\s-]){0,100}$/,
         mask: '',
         delimiter: ''
     },
