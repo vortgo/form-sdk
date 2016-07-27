@@ -53,7 +53,7 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
-        card_mask: '#### #### #### #####'
+        card_mask: '#### #### #### ####'
     },
     {
         regular_expression: /^64[4-9][0-9]{13}$/,
