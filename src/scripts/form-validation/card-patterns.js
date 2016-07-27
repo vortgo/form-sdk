@@ -17,7 +17,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^3[89][0-9]{12}$/,
-        partial_regular_expression:  /^3[89]]/,
+        partial_regular_expression:  /^3[89]/,
         pattern: /^[0-9]{0,15}/,
         luhn_algorithm: true,
         card_brand_name: 'DINERS CLUB INTERNATIONAL',
@@ -35,7 +35,7 @@ export const card_patterns = [
     {
         regular_expression: /^6011[0-9]{12}$/,
         partial_regular_expression: /^6011/,
-        pattern: /^[0-9]{0,17}/,
+        pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
         card_mask: '#### #### #### #####'
@@ -113,34 +113,34 @@ export const card_patterns = [
         card_mask: '#### #### #### ####'
     },
     {
-        regular_expression: /^4([0-9]{12}|[0-9]{15}|[0-9]{18})$/,
+        regular_expression: /^4[0-9]{12,15}$/,
         partial_regular_expression: /^4/,
-        pattern: /^[0-9]{0,19}/,
+        pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'VISA',
         card_mask: '#### #### #### #### ###'
     },
     {
-        regular_expression: /[0-9]{6,20}/,
-        partial_regular_expression: /^[0-9]/,
-        pattern: /^[0-9]{0,20}/,
-        luhn_algorithm: false,
+        regular_expression: /^[0-9]{16}$/,
+        partial_regular_expression: /^(401178|401179|431274|438935|451416|457393|457631|457632|504175|636297|4576|4011|506[6-7]|509[0-9]{3}|627780|636368|6500[3-5]|650[4-5]|6507|6509[0-2]|6516[5-7]|6550[0-5])/,
+        pattern: /^[0-9]{0,16}/,
+        luhn_algorithm: true,
         card_brand_name: 'ELO',
         card_mask: '#### #### #### #### ####'
     },
     {
-        regular_expression: /[0-9]{6,20}/,
-        partial_regular_expression: /^[0-9]/,
-        pattern: /^[0-9]{0,20}/,
-        luhn_algorithm: false,
+        regular_expression: /^(38|60)[0-9]{11,17}$/,
+        partial_regular_expression: /^(38|60)/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: true,
         card_brand_name: 'HIPERCARD',
         card_mask: '#### #### #### #### ####'
     },
     {
-        regular_expression: /[0-9]{6,20}/,
-        partial_regular_expression: /^[0-9]/,
-        pattern: /^[0-9]{0,20}/,
-        luhn_algorithm: false,
+        regular_expression: /^50[0-9]{14,17}$/,
+        partial_regular_expression: /^50/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: true,
         card_brand_name: 'AURA',
         card_mask: '#### #### #### #### ####'
     }
