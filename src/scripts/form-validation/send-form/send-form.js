@@ -4,6 +4,7 @@ import 'spin/dist/spin.min';
 import {showErrors} from './error-result';
 import {decline} from './decline-result';
 import {approve} from './approved-result';
+import {verify} from './verify-result';
 
 import {opts} from './spinner-opts';
 import {FORM_NAME} from '../constants';
@@ -12,7 +13,7 @@ import {
   STATUS_APPROVED,
   STATUS_DECLINED,
   STATUS_PROCESSING,
-  STATUS_ERROR
+  STATUS_VERIFY
 } from './order-statuses';
 
 import {
@@ -92,6 +93,15 @@ export function sendForm($form, data) {
             console.log('order approved');
             if (res.body.redirect_url) {
               approve(res.body.redirect_url);
+            }
+            stopSpinner();
+
+            break;
+
+          case STATUS_VERIFY:
+            console.log('order verify');
+            if (res.body.verify_url) {
+              verify(res.body.verify_url);
             }
             stopSpinner();
 
@@ -177,6 +187,15 @@ function statusRequest(checkSum, $form) {
             console.log('order approved');
             if (res.body.redirect_url) {
               approve(res.body.redirect_url);
+            }
+            stopSpinner();
+
+            break;
+
+          case STATUS_VERIFY:
+            console.log('order verify');
+            if (res.body.verify_url) {
+              verify(res.body.verify_url);
             }
             stopSpinner();
 

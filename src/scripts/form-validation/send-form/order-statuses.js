@@ -10,4 +10,4 @@ export const STATUS_PROCESSING = 'processing';
 
 export const STATUS_REFUNDED = 'refunded';
 
-export const STATUS_ERROR = 'error';
+export const STATUS_VERIFY = '3ds_verify';
