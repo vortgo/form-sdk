@@ -19,6 +19,16 @@ export const rules = {
         mask: '',
         delimiter: ''
     },
+    card_exp_month_select: {
+        pattern: /^(0[1-9]?|1[0-2]?)?$/,
+        mask: '',
+        delimiter: ''
+    },
+    card_exp_year_select: {
+        pattern: /^\d{0,4}$/,
+        mask: '',
+        delimiter: ''
+    },
     card_cvv: {
         pattern: /^\d{0,4}$/,
         mask: '',
