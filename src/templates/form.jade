@@ -61,6 +61,36 @@ mixin expiryDate
         description = ""
         )
 
+
+mixin select(name, placeholder, start_val, end_val)
+    - var item = start_val
+
+    select(
+        id="card_exp_#{name}-select",
+        class="card_exp_#{name} card_exp_#{name}-select",
+        name="pay_form[card_exp_#{name}_select]"
+    )
+        option(value="")= placeholder
+        while item < end_val + 1
+
+            -var value = (item > 9) ? item : "0" + item
+            option(value=value)= item++
+
+
+mixin expiryDateSelect
+    label(for="card_exp_month-select") Expiry date
+    .expiry-date-select
+        +select("month", "MM", 1, 12)
+        -var year = new Date().getFullYear()
+
+        +select("year", "YY", year, year+10)
+
+        +info-block(
+                errortext = 'pay_form.attributes.' + name + '.error',
+                description = attributes.description
+                )
+
+
 mixin cardCvv
     +input("Card cvv", "card_cvv", "1234")(
         maxlength="4",

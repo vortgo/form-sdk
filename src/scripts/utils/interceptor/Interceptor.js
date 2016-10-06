@@ -55,7 +55,10 @@ export class Interceptor {
 
     // Смещаем курсор, если значение валидно и оставляем на месте, если не валидно
     let position = caretController.currentSelection;
-    this.element.setSelectionRange(position, position);
+
+    if (typeof(this.element.setSelectionRange) == 'function') {
+        this.element.setSelectionRange(position, position);
+    }
     this.old_selection = position;
 
     // Имитируем событие "change" для адекватного изменения модели у Angular
