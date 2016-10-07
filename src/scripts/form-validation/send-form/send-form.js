@@ -44,11 +44,15 @@ export function sendForm($form, data) {
     .post(url)
     .type('json')
     .send(data)
-    .set('Accept', 'application/json')
+    .accept('json')
     .set('X-Requested-With', 'XMLHttpRequest')
     .end((err, res) => {
 
       if (!res) return;
+
+      if (!res.body) {
+        res.body = JSON.parse(res.text)
+      }
 
       console.warn('yay got ' + JSON.stringify(res.body));
       //console.log('payment status', res.body.order.status);
@@ -142,11 +146,15 @@ function statusRequest(checkSum, $form) {
     .post(url)
     .type('json')
     .send(JSON.stringify({checkSum}))
-    .set('Accept', 'application/json')
+    .accept('json')
     .set('X-Requested-With', 'XMLHttpRequest')
     .end((err, res) => {
 
       if (!res) return;
+
+      if (!res.body) {
+        res.body = JSON.parse(res.text)
+      }
 
       console.warn('yay got ' + JSON.stringify(res.body));
 
