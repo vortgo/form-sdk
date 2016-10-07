@@ -10,5 +10,5 @@ npm-debug.log
 !/src/styles/example/
 !/src/templates/example/
 !/src/styles/common.styl
-!/src/templates/form.jade
-!/src/templates/layout.jade
+!/src/templates/form.pug
+!/src/templates/layout.pug

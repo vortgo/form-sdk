@@ -4,15 +4,29 @@ const autoprefixer = require('autoprefixer')
 const extractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const glob = require('glob')
+const WebpackClean = require('webpack-clean');
+
+const DEVELOPMENT = 'development';
+const PRODUCTION = 'production';
+const isDevelopment = process.env.NODE_ENV === DEVELOPMENT;
 
 const config = {
-  devtool: 'source-map',
+  devtool: isDevelopment && 'eval',
+  devServer: {
+    stats: 'errors-only',
+    port: 8080
+  },
+  stats: {
+    children: false
+  },
+
   entry: {
-    'js/main': path.resolve(__dirname, 'src/scripts/index.js')
+    'js/main': ['babel-polyfill', path.resolve(__dirname, 'src/scripts/index.js')],
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].js'
+    filename: '[name].js',
+    pathinfo: isDevelopment
   },
   resolve: {
     extensions: ['', '.js', '.styl']
@@ -29,12 +43,13 @@ const config = {
       },
       {
         test: /\.js$/,
-        loaders: ['es3ify', 'babel'],
-        include: path.join(__dirname, 'src')
+        loader: 'babel',
+        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/
       },
       {
-        test: /\.jade$/,
-        loader: 'jade',
+        test: /\.pug$/,
+        loader: 'pug',
         query: {
           pretty: true
         }
@@ -50,9 +65,23 @@ const config = {
     __dirname: true
   },
   plugins: [
-    new extractTextPlugin('[name].css'),
-    // new webpack.optimize.UglifyJsPlugin(),
-    new webpack.DefinePlugin({ "global.GENTLY": false })
+    new WebpackClean(['build/css/*.js']),
+    new webpack.NoErrorsPlugin(),
+    new extractTextPlugin('[name].css', {
+      allChunks: true
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: !isDevelopment,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'global.GENTLY': false,
+      'process.env': {
+        'NODE_ENV': JSON.stringify(isDevelopment ? DEVELOPMENT : PRODUCTION)
+      }
+    }),
   ]
 }
 
@@ -64,7 +93,7 @@ glob.sync(__dirname + '/src/styles/**/index.styl', {}).forEach(filePath => {
   });
 })
 
-glob.sync(__dirname + '/src/templates/**/index.jade', {}).forEach(filePath => {
+glob.sync(__dirname + '/src/templates/**/index.pug', {}).forEach(filePath => {
   const JS_CHUNK = 'js/main';
   const file_name = path.parse(filePath).dir.split('/').splice(-1)[0];
   const assets = Object.keys(config.entry)
