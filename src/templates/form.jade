@@ -6,13 +6,13 @@ mixin info-block()
     p.description= attributes.description
 
 
-mixin input(label, name, placeholder, value)
+mixin input(label, name, placeholder, value, type)
     div(class=name)
         label(for=name + "-input")= label
         .input-block
             input(
                 id=name + "-input",
-                type="text",
+                type=type,
                 name="pay_form[" + name + "]",
                 placeholder=placeholder,
                 maxlength=attributes.maxlength,
@@ -33,7 +33,7 @@ mixin form
         span.cost
 
 mixin cardNumber
-    +input("Card number", "card_number", "1111 1111 1111 1111")(
+    +input("Card number", "card_number", "1111 1111 1111 1111", "", "tel")(
         maxlength="30",
         errortext="Número do cartão selecionado inválido")
 
@@ -44,14 +44,14 @@ mixin expiryDate
     .expiry-date
         label(for="card_exp_month-input") Expiry date
         .input-block
-            +input("Card exp month", "card_exp_month", "MM")(
+            +input("Card exp month", "card_exp_month", "MM", "", "tel")(
             maxlength="2",
             onfocus="handleInputFocus(true)",
             onblur="handleInputFocus(false)")
 
             span.date-separator /
 
-            +input("Card exp year", "card_exp_year", "YY")(
+            +input("Card exp year", "card_exp_year", "YY", "", "tel")(
             onfocus="handleInputFocus(true);",
             onblur="handleInputFocus(false);",
             maxlength="4")
@@ -92,7 +92,7 @@ mixin expiryDateSelect
 
 
 mixin cardCvv
-    +input("Card cvv", "card_cvv", "1234")(
+    +input("Card cvv", "card_cvv", "1234", "", "tel")(
         maxlength="4",
         description="Os 3 dígitos do número nas costas do seu cartão")
 
@@ -112,4 +112,4 @@ mixin city
     +input("city", "city", "city", "New York", "New York")
 
 mixin zipCode
-    +input("Zip code", "zip_code", "12345", "12345")(maxlength="5")
+    +input("Zip code", "zip_code", "12345", "12345", "", "tel")(maxlength="5")
