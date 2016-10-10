@@ -60,10 +60,6 @@ export class Interceptor {
         this.element.setSelectionRange(position, position);
     }
     this.old_selection = position;
-
-    // Имитируем событие "change" для адекватного изменения модели у Angular
-    let evt = new KeyboardEvent('change');
-    this.element.dispatchEvent(evt);
   }
 
   __onInput(event) {
