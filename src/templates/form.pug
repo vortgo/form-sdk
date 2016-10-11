@@ -65,12 +65,11 @@ mixin expiryDate
 mixin select(name, placeholder, start_val, end_val, title)
     - var item = start_val
 
-    label(for="card_exp_#{name}-select")= title
+    label(for="card_exp_" + name + "-select")= title
 
     select(
-        id="card_exp_#{name}-select",
-        class="card_exp_#{name} card_exp_#{name}-select",
-        name="pay_form[card_exp_#{name}]"
+        id="card_exp_" + name + "-select",
+        name="pay_form[card_exp_" + name + "]"
     )
         option(value="", disabled="", selected="")= placeholder
         while item < end_val + 1
