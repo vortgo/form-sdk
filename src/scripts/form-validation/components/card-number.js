@@ -1,5 +1,3 @@
-import filter from 'lodash/filter';
-import isEmpty from 'lodash/isEmpty';
 var validate = require('fast-luhn');
 import {Input} from './input';
 import {card_patterns} from './../card-patterns';
@@ -10,7 +8,7 @@ export class CardNumber extends Input {
 
     // (card_number: String) => Array[Object]
     getCardTypes(card_number) {
-        return filter(card_patterns, card => {
+        return card_patterns.filter(card => {
             if (card.partial_regular_expression) {
                 return card.partial_regular_expression.test(card_number);
             }
@@ -26,14 +24,14 @@ export class CardNumber extends Input {
     isValid() {
         const card_number = this.getCardNumber(this.model.get(this.full_name));
         const card_type = this.getCardTypes(card_number)[0];
-        
+
         if (card_type) {
             this.interceptor
                 .pattern(card_type.pattern || this.cardParams.pattern)
                 .mask(card_type.card_mask, ' ');
         }
 
-        return !isEmpty(card_type)
+        return card_type && Object.keys(card_type).length > 0
             && card_type.regular_expression.test(card_number)
             && (!card_type.luhn_algorithm || validate(card_number));
     }

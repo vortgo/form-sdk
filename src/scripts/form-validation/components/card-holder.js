@@ -13,8 +13,13 @@ export class CardHolder extends Input {
   constructor(...args) {
     super(...args);
     this.interceptor.interceptEvent('input', event => {
-      event.target.value = romanize(event.target.value).toUpperCase();
-      event.target.selectionStart = event.target.selectionEnd = event.target.value.length;
+      if (event.target.value) {
+        event.target.value = romanize(event.target.value).toUpperCase();
+        event.target.selectionStart = event.target.selectionEnd = event.target.value.length;
+      }
+
+      return false;
+
     })
   }
 }
