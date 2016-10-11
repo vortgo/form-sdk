@@ -1,4 +1,3 @@
-import invokeMap from 'lodash/invokeMap';
 import remove from 'lodash/remove';
 import {Model} from './Model';
 import {initComponent} from './initComponent';
@@ -58,7 +57,7 @@ export class App {
    * Invokes all components' `update` function
    */
   update(element) {
-    invokeMap(this.components, 'update', element);
+    this.components.forEach(component => component.update && component.update(element));
   }
 
   /**

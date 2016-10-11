@@ -1,6 +1,3 @@
-import toArray from 'lodash/toArray';
-import isEqual from 'lodash/isEqual';
-
 /**
  * Класс, отвечающий за валидацию и форматирование пользовательского ввода
  */
@@ -38,7 +35,7 @@ export class Validation {
    */
   getValidValue(old_value, new_value, selection) {
 
-    if (isEqual(old_value, new_value)) {
+    if (old_value === new_value) {
       return old_value;
     }
 
@@ -87,7 +84,7 @@ export class Validation {
    * @return {obj}              объект, содержащий новое отформатированное значение и новое выделение (положение курсора)
    */
   mask(value, selection) {
-    let digits = toArray(value.replace(/\D/, '')),
+    let digits = [...value.replace(/\D/, '')],
         formatted_value = this.opts.mask;
 
     digits.forEach((char) => {

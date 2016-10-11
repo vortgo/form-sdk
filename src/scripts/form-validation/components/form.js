@@ -1,5 +1,3 @@
-import forEach from 'lodash/forEach';
-import invoke from 'lodash/invoke';
 import {Component} from '../../utils/validation';
 import {sendForm} from '../send-form';
 
@@ -24,11 +22,11 @@ export class Form extends Component {
         let formIsValid = true;
         this.invalidFields = [];
 
-        forEach(components, component => {
+        components.forEach(component => {
             component.model.set(component.full_name, component.element.value);
             component.dirty = true;
-            invoke(component, 'setValidationMark', component.isValid());
-            invoke(component, 'setDirty');
+            component.setValidationMark && component.setValidationMark(component.isValid())
+            component.setDirty && component.setDirty()
 
             if (this.componentExists(component) && !component.isValid()) {
                 formIsValid = false;

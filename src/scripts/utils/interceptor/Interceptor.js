@@ -67,8 +67,12 @@ export class Interceptor {
         selection = this.element.selectionStart,
         offset = 1;
 
+    if (new_value === this.old_value) {
+      event.preventDefault();
+      return false;
+    }
+
     this.__validate(new_value, selection, offset);
-    event.preventDefault();
   }
 
   __onPaste(event) {

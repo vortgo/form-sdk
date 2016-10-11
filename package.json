@@ -27,8 +27,6 @@
     "autoprefixer": "^6.3.3",
     "babel-core": "^6.7.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-syntax-class-properties": "^6.5.0",
-    "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.5.0",
     "babel-plugin-transform-es3-property-literals": "^6.5.0",
     "babel-polyfill": "^6.16.0",
@@ -53,7 +51,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "athletic": "^2.0.1",
     "fast-luhn": "^1.0.3",
     "lodash": "^4.6.1",
     "node-romanization": "0.0.5",
