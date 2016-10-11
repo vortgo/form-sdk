@@ -5,7 +5,7 @@ export class CardExpYearSelect extends Input {
     constructor(...args) {
         super(...args);
 
-        this.parent = document.getElementsByClassName('expiry-date-select')[0];
+        this.parent = document.getElementsByClassName('expiry-date-select-input')[0];
     }
     isValid() {
         const expire_year = this.element.value;

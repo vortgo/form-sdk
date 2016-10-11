@@ -42,14 +42,14 @@ export const componentList = [
     },
     {
         name: 'card_exp_month_select',
-        selector: '.card_exp_month-select',
+        selector: '.card_exp_month_select-select',
         component: CardExpMonthSelect,
         model: true,
         defaultValue: ''
     },
     {
         name: 'card_exp_year_select',
-        selector: '.card_exp_year-select',
+        selector: '.card_exp_year_select-select',
         component: CardExpYearSelect,
         model: true,
         defaultValue: ''

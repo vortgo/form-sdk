@@ -38,7 +38,7 @@ mixin cardNumber
         errortext="Número do cartão selecionado inválido")
 
 mixin cardHolder
-    +input("Card holder", "card_holder", "John Johnson")
+    +input("Name on card", "card_holder", "John Johnson")
 
 mixin expiryDate
     .expiry-date
@@ -62,37 +62,45 @@ mixin expiryDate
         )
 
 
-mixin select(name, placeholder, start_val, end_val)
+mixin select(name, placeholder, start_val, end_val, title)
     - var item = start_val
+
+    label(for="card_exp_#{name}-select")= title
 
     select(
         id="card_exp_#{name}-select",
         class="card_exp_#{name} card_exp_#{name}-select",
-        name="pay_form[card_exp_#{name}_select]"
+        name="pay_form[card_exp_#{name}]"
     )
-        option(value="")= placeholder
+        option(value="", disabled="", selected="")= placeholder
         while item < end_val + 1
-
             -var value = (item > 9) ? item : "0" + item
             option(value=value)= item++
 
+        +info-block(
+            errortext = 'pay_form.attributes.' + name + '.error',
+            description = attributes.description
+        )
 
 mixin expiryDateSelect
-    label(for="card_exp_month-select") Expiry date
     .expiry-date-select
-        +select("month", "MM", 1, 12)
-        -var year = new Date().getFullYear()
+        label(for="expiry-date-select") Expires
+        .input-block.expiry-date-select-input
+            +select("month_select", "MM", 1, 12, "Month")
+            -var year = new Date().getFullYear()
 
-        +select("year", "YY", year, year+10)
+            span.date-separator /
 
-        +info-block(
+            +select("year_select", "YYYY", year, year+10, "Year")
+
+            +info-block(
                 errortext = 'pay_form.attributes.' + name + '.error',
                 description = attributes.description
-                )
+            )
 
 
 mixin cardCvv
-    +input("Card cvv", "card_cvv", "1234")(
+    +input("Security number", "card_cvv", "1234")(
         maxlength="4",
         description="Os 3 dígitos do número nas costas do seu cartão")
 
