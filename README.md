@@ -20,14 +20,14 @@
     Пример:
     
     ```
-    extends ../layout.jade
-    include ../form.jade
+    extends ../layout.pug
+    include ../form.pug
     
     block form
         +form
             +cardNumber
-            +cardHolder
             +expiryDate
+            +cardHolder
             +cardCvv
             +cpf
             +dni
@@ -39,4 +39,4 @@
     ```
     
     **Важно: необходимо строго соблюдать порядок очередности подключаемых миксинов элементов (полей) формы, как в примере!**
-4. Для просмотра результата запустить сервер `npm start` и открыть в браузере URL по имени созданных директорий `http://localhost:8080/example.html`
+4. Для просмотра результата запустить сервер `npm run dev` и открыть в браузере URL по имени созданных директорий `http://localhost:8080/example.html`
