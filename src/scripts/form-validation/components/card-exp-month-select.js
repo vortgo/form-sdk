@@ -2,6 +2,12 @@ import {Input} from './input';
 import {FORM_NAME} from '../constants';
 
 export class CardExpMonthSelect extends Input {
+    constructor(...args) {
+        super(...args);
+
+       this.parent = document.getElementsByClassName('expiry-date-select')[0];
+    }
+
     isValid() {
         const expire_year = this.model.get(`${FORM_NAME}[card_exp_year_select]`);
 
