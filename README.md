@@ -33,6 +33,7 @@
             +dni
             +personalId
             +address
+            +state
             +city
             +zipCode
 

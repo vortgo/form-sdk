@@ -6,6 +6,7 @@ import {CardExpMonthSelect} from './components/card-exp-month-select';
 import {CardExpYearSelect} from './components/card-exp-year-select';
 import {CardCVV} from './components/card-cvv';
 import {Address} from './components/address';
+import {StateSelect} from './components/state-select';
 import {City} from './components/city';
 import {ZipCode} from './components/zip-code';
 import {Cpf} from './components/cpf';
@@ -65,6 +66,13 @@ export const componentList = [
         name: 'address',
         selector: '.address input',
         component: Address,
+        model: true,
+        defaultValue: ''
+    },
+    {
+        name: 'state-select',
+        selector: '.state select',
+        component: StateSelect,
         model: true,
         defaultValue: ''
     },

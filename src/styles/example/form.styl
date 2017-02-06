@@ -34,6 +34,7 @@ label
   font-size 1em
 
 input
+select
   height 2.5em
   padding .65em 1.5em .65em .55em
   width 100%
@@ -45,10 +46,11 @@ input
 
   &:active,
   &:focus
-    box-shadow $input-border-normal-focus-shadoww
+    box-shadow $input-border-normal-focus-shadow
     outline 0
 
 .error input
+.error select
   border 1px solid $error-text-color
   box-shadow $input-border-focus-error-shadow
 
@@ -187,6 +189,7 @@ button
 .address
 .city
 .zip_code
+.state
   @extend $control-group
 
 .card_cvv .input-block
@@ -228,3 +231,6 @@ button
     height 16px
     background url('img/close.png') no-repeat
     cursor pointer
+
+select
+  background $white

@@ -61,8 +61,24 @@ mixin expiryDate
         description = ""
         )
 
+mixin select(label, name, placeholder, choices)
 
-mixin select(label, name, placeholder, start_val, end_val)
+    div(class=name)
+        label(for=name + "-select")= label
+        .input-block
+            select(
+            id=name + "-select",
+            name="pay_form[" + name + "]")
+                option(value="", disabled="", selected="")= placeholder
+                each item, key in choices
+                    option(value=key)= item
+
+            +info-block(
+            errortext = 'pay_form.attributes.' + name + '.error',
+            description = attributes.description
+            )
+
+mixin selectRange(label, name, placeholder, start_val, end_val)
     - var item = start_val
 
     div(class=name)
@@ -86,12 +102,12 @@ mixin expiryDateSelect
     .expiry-date-select
         label(for="card_exp_month-select") Expires
         .input-block
-            +select("Card exp month", "card_exp_month_select", "MM", 1, 12)
+            +selectRange("Card exp month", "card_exp_month_select", "MM", 1, 12)
             -var year = new Date().getFullYear()
 
             span.date-separator /
 
-            +select("Card exp year", "card_exp_year_select", "YY", year, year+10)
+            +selectRange("Card exp year", "card_exp_year_select", "YY", year, year + 10)
 
         +info-block(
         errortext = 'pay_form.attributes.' + name + '.error',
@@ -114,6 +130,9 @@ mixin personalId
 
 mixin address
     +input("Address", "address", "address", "8 Banana street")
+
+mixin state
+    +select("State", "state", "", {'AE': 'AE - U.S. Armed Forces – Europe', 'AK': 'AK - Alaska', 'AL': 'AL - Alabama'})
 
 mixin city
     +input("city", "city", "city", "New York", "New York")
