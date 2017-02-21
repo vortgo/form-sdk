@@ -29,6 +29,7 @@
             +expiryDate
             +cardHolder
             +cardCvv
+            +cardPin
             +cpf
             +dni
             +personalId

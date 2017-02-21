@@ -34,6 +34,11 @@ export const rules = {
         mask: '',
         delimiter: ''
     },
+    card_pin: {
+        pattern: /^\d{0,4}$/,
+        mask: '',
+        delimiter: ''
+    },
     zip_code: {
         pattern: /^\d{0,5}$/,
         mask: '',

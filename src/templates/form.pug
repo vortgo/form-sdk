@@ -119,6 +119,11 @@ mixin cardCvv
         maxlength="4",
         description="Os 3 dígitos do número nas costas do seu cartão")
 
+mixin cardPin
+    +input("PIN", "card_pin", "PIN", "", "tel")(
+    maxlength="4",
+    description="Card PIN")
+
 mixin cpf
     +input("CPF", "cpf", "CPF data")
 
