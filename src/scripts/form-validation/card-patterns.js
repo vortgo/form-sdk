@@ -112,6 +112,22 @@ export const card_patterns = [
         card_mask: '#### #### #### #### ###'
     },
     {
+        regular_expression: /^506(099|1([0-8][0-9]|9[0-8]))[0-9]{10,13}$/,
+        partial_regular_expression: /^506(099|1([0-8][0-9]|9[0-8]))/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: false,
+        card_brand_name: 'VERVE',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
+        regular_expression: /^(521090|528649|528668|551609)[0-9]{10,13}$/,
+        partial_regular_expression: /^(521090|528649|528668|551609)/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: false,
+        card_brand_name: 'VERVE',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
         regular_expression: /^50[0-9]{14,17}$/,
         partial_regular_expression: /^50/,
         pattern: /^[0-9]{0,19}/,
