@@ -45,13 +45,20 @@
 
 ## Messaging system
 
-У формы, запущенной внутри iframe есть возможность коммуникации с родительским элементом посредством постмессенджинга.
+У формы, запущенной внутри iframe, есть возможность коммуникации с родительским окном посредством postMessage.
 
-Доступные иивенты:
+Доступные типы сообщений:
 
 ```
 WindowHeight {
   height:integer,
   type:"windowHeight"
+}
+```
+
+```
+OrderStatus {
+  status:"processing|approved|declined|3ds_verify",
+  type:"orderStatus"
 }
 ```
