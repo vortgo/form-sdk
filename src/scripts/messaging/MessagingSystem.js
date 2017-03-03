@@ -3,11 +3,7 @@ import Message from './Message';
 /**
  * This Class contains functionality for work with Message System.
  */
-class MessagingSystem {
-
-    constructor() {
-
-    }
+export default class MessagingSystem {
 
     /**
      * Sending msg to el`s parent using Window.postMessage
@@ -104,5 +100,3 @@ class MessagingSystem {
     }
 
 }
-
-export {MessagingSystem as default}

@@ -9,6 +9,9 @@ import {verify} from './verify-result';
 import {opts} from './spinner-opts';
 import {FORM_NAME} from '../constants';
 
+import MessagingSystem from "../../messaging/MessagingSystem";
+import OrderStatus from "../../messaging/messageTypes/OrderStatus";
+
 import {
   STATUS_APPROVED,
   STATUS_DECLINED,
@@ -80,7 +83,7 @@ export function sendForm($form, data) {
               checkSum = data[FORM_NAME].checksum;
             }
             console.log('get answer', data);
-
+            pushPostMessageOrderStatus('processing');
             statusRequest(checkSum, $form);
 
             break;
@@ -91,6 +94,7 @@ export function sendForm($form, data) {
               decline(res.body.redirect_url);
             }
             stopSpinner();
+            pushPostMessageOrderStatus('declined');
             break;
 
           case STATUS_APPROVED:
@@ -99,7 +103,7 @@ export function sendForm($form, data) {
               approve(res.body.redirect_url);
             }
             stopSpinner();
-
+            pushPostMessageOrderStatus('approved');
             break;
 
           case STATUS_VERIFY:
@@ -108,7 +112,7 @@ export function sendForm($form, data) {
               verify(res.body.verify_url);
             }
             stopSpinner();
-
+            pushPostMessageOrderStatus('3ds_verify');
             break;
         }
       }
@@ -179,7 +183,7 @@ function statusRequest(checkSum, $form) {
               console.log('status processing');
               statusRequest(checkSum)
             }, FORM_SEND_TIMEOUT);
-
+            pushPostMessageOrderStatus('processing');
             break;
 
           case STATUS_DECLINED:
@@ -188,7 +192,7 @@ function statusRequest(checkSum, $form) {
               decline(res.body.redirect_url);
             }
             stopSpinner();
-
+            pushPostMessageOrderStatus('declined');
             break;
 
           case STATUS_APPROVED:
@@ -197,7 +201,7 @@ function statusRequest(checkSum, $form) {
               approve(res.body.redirect_url);
             }
             stopSpinner();
-
+            pushPostMessageOrderStatus('approved');
             break;
 
           case STATUS_VERIFY:
@@ -206,7 +210,7 @@ function statusRequest(checkSum, $form) {
               verify(res.body.verify_url);
             }
             stopSpinner();
-
+            pushPostMessageOrderStatus('3ds_verify');
             break;
         }
       }
@@ -214,4 +218,16 @@ function statusRequest(checkSum, $form) {
 
   target.classList.add('opaque');
   spinner.spin(target);
+}
+
+function pushPostMessageOrderStatus(status) {
+  try {
+    var Messaging = new MessagingSystem();
+    var OrderStatusMessage = new OrderStatus('orderStatus', status);
+
+      Messaging.sendToDomParent(OrderStatusMessage, window);
+
+  } catch (err) {
+    console.warn("Something goes wrong.");
+  }
 }

@@ -1,15 +1,15 @@
-import Message from "./../Message"
+import Message from "../Message"
 /**
  * Contains ability for working with height of window.
  */
-class WindowHeight extends Message {
+export default class WindowHeight extends Message {
 
     /**
      * Param should be string or integer
-     * @param height
+     * @param value
      */
-    setHeight(height) {
-        height = parseInt(height);
+    setHeight(value) {
+        const height = parseInt(value);
 
         if (isNaN(height)) {
             throw new Error('Height cannot be parsed as integer value.');
@@ -19,5 +19,3 @@ class WindowHeight extends Message {
     }
 
 }
-
-export {WindowHeight as default}

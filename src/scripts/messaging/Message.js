@@ -1,14 +1,17 @@
 /**
  * Base class for every Message.
  */
-class Message {
+export default class Message {
     constructor(type) {
         this.type = type;
     }
 
     toJSONString() {
-        return JSON.stringify(this);
+        try {
+            return JSON.stringify(this);
+        } catch (error) {
+            console.error(error);
+        }
+
     }
 }
-
-export {Message as default}
