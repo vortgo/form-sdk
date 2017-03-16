@@ -2,21 +2,25 @@ import MessagingSystem from "./MessagingSystem";
 import WindowHeight from "./messageTypes/WindowHeight";
 
 try {
-    var Messaging = new MessagingSystem();
-    var ConcreteMessage = new WindowHeight("windowHeight");
-    window.addEventListener("load", function () {
-        var body = document.body,
+    const Messaging = new MessagingSystem();
+    const ConcreteMessage = new WindowHeight("windowHeight");
+
+    function postHeightMessage () {
+        const body = document.body,
             html = document.documentElement;
 
-        var height = Math.max(body.scrollHeight, body.offsetHeight,
+        const height = Math.max(body.scrollHeight, body.offsetHeight,
             html.clientHeight, html.scrollHeight, html.offsetHeight);
 
 
         ConcreteMessage.setHeight(height);
 
         Messaging.sendToDomParent(ConcreteMessage, window);
-    });
+    }
+
+    window.addEventListener('load', postHeightMessage);
+    window.addEventListener('resize', postHeightMessage);
 
 } catch (err) {
-    console.warn("Something goes wrong.");
+    console.warn('Something went wrong.');
 }

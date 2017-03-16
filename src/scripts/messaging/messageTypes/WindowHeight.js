@@ -9,7 +9,7 @@ export default class WindowHeight extends Message {
      * @param value
      */
     setHeight(value) {
-        const height = parseInt(value);
+        const height = parseInt(value, 10);
 
         if (isNaN(height)) {
             throw new Error('Height cannot be parsed as integer value.');
