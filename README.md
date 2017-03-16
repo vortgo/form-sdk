@@ -58,7 +58,7 @@ WindowHeight {
 
 ```
 OrderStatus {
-  status:"processing|approved|declined|3ds_verify",
+  response: { ... },
   type:"orderStatus"
 }
 ```

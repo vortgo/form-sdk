@@ -73,19 +73,19 @@ export function sendForm($form, data) {
         return;
       }
 
+      pushPostMessageWithResponse(res.body);
+
       if (res.body.order) {
         switch (res.body.order.status) {
 
           case STATUS_PROCESSING:
-            var checkSum = data;
+            let checkSum = data;
 
             if (typeof(data) == 'object') {
               checkSum = data[FORM_NAME].checksum;
             }
             console.log('get answer', data);
-            pushPostMessageOrderStatus('processing');
-            statusRequest(checkSum, $form);
-
+            statusRequest(checkSum);
             break;
 
           case STATUS_DECLINED:
@@ -94,7 +94,6 @@ export function sendForm($form, data) {
               decline(res.body.redirect_url);
             }
             stopSpinner();
-            pushPostMessageOrderStatus('declined');
             break;
 
           case STATUS_APPROVED:
@@ -103,7 +102,6 @@ export function sendForm($form, data) {
               approve(res.body.redirect_url);
             }
             stopSpinner();
-            pushPostMessageOrderStatus('approved');
             break;
 
           case STATUS_VERIFY:
@@ -112,7 +110,6 @@ export function sendForm($form, data) {
               verify(res.body.verify_url);
             }
             stopSpinner();
-            pushPostMessageOrderStatus('3ds_verify');
             break;
         }
       }
@@ -126,12 +123,12 @@ export function sendForm($form, data) {
 
 }
 
-function statusRequest(checkSum, $form) {
+function statusRequest(checkSum) {
 
   const target = document.querySelector('body');
   const stopSpinner = stopSpinnerWithTarget.bind(undefined, spinner, target);
 
-  var timeNow = new Date();
+  let timeNow = new Date();
   timeNow = timeNow.getHours() * 3600 + timeNow.getMinutes() * 60 + timeNow.getSeconds();
 
   if ((timeNow-startProcessing) >= FORM_SEND_TIME) {
@@ -174,8 +171,8 @@ function statusRequest(checkSum, $form) {
       }
 
       console.log('get answer', res);
+      pushPostMessageWithResponse(res.body);
       if (res.body.order) {
-
         switch (res.body.order.status) {
 
           case STATUS_PROCESSING:
@@ -183,7 +180,6 @@ function statusRequest(checkSum, $form) {
               console.log('status processing');
               statusRequest(checkSum)
             }, FORM_SEND_TIMEOUT);
-            pushPostMessageOrderStatus('processing');
             break;
 
           case STATUS_DECLINED:
@@ -192,7 +188,6 @@ function statusRequest(checkSum, $form) {
               decline(res.body.redirect_url);
             }
             stopSpinner();
-            pushPostMessageOrderStatus('declined');
             break;
 
           case STATUS_APPROVED:
@@ -201,7 +196,6 @@ function statusRequest(checkSum, $form) {
               approve(res.body.redirect_url);
             }
             stopSpinner();
-            pushPostMessageOrderStatus('approved');
             break;
 
           case STATUS_VERIFY:
@@ -210,7 +204,6 @@ function statusRequest(checkSum, $form) {
               verify(res.body.verify_url);
             }
             stopSpinner();
-            pushPostMessageOrderStatus('3ds_verify');
             break;
         }
       }
@@ -220,14 +213,14 @@ function statusRequest(checkSum, $form) {
   spinner.spin(target);
 }
 
-function pushPostMessageOrderStatus(status) {
+function pushPostMessageWithResponse(response) {
   try {
-    var Messaging = new MessagingSystem();
-    var OrderStatusMessage = new OrderStatus('orderStatus', status);
+    let Messaging = new MessagingSystem();
+    let OrderStatusMessage = new OrderStatus('orderStatus', response);
 
       Messaging.sendToDomParent(OrderStatusMessage, window);
 
   } catch (err) {
-    console.warn("Something goes wrong.");
+    console.warn('Something went wrong.');
   }
 }

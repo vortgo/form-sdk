@@ -2,10 +2,10 @@ import Message from "../Message"
 
 export default class OrderStatus extends Message {
 
-    constructor(type, status) {
+    constructor(type, response) {
         super(type);
 
-        this.status = status;
+        this.response = response;
     }
 
 }
