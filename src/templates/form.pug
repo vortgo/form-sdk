@@ -56,10 +56,10 @@ mixin expiryDate
             onblur="handleInputFocus(false);",
             maxlength="4")
 
-        +info-block(
-        errortext = "",
-        description = ""
-        )
+            +info-block(
+                errortext = "",
+                description = ""
+                )
 
 mixin select(label, name, placeholder, choices)
 
@@ -109,10 +109,10 @@ mixin expiryDateSelect
 
             +selectRange("Card exp year", "card_exp_year_select", "YY", year, year + 10)
 
-        +info-block(
-        errortext = 'pay_form.attributes.' + name + '.error',
-        description = attributes.description
-        )
+            +info-block(
+                errortext = 'pay_form.attributes.' + name + '.error',
+                description = attributes.description
+                )
 
 mixin cardCvv
     +input("Security number", "card_cvv", "1234", "", "tel")(
