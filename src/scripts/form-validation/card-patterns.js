@@ -200,6 +200,14 @@ export const card_patterns = [
         card_mask: '#### #### #### ####'
     },
     {
+        regular_expression: /^(676280|639002)[0-9]{12}$/,
+        partial_regular_expression: /^(676280|639002)/,
+        pattern: /^[0-9]{0,18}/,
+        luhn_algorithm: false,
+        card_brand_name: 'MAESTRO',
+        card_mask: '#### #### #### #### ##'
+    },
+    {
         regular_expression: /^63[7-9][0-9]{13}$/,
         partial_regular_expression: /^63[7-9]/,
         pattern: /^[0-9]{0,16}/,
