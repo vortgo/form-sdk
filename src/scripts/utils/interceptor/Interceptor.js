@@ -1,6 +1,6 @@
 import {CaretController} from './CaretController';
 import {Validation} from './Validation';
-
+import requestAnimationFramePolyfill from '../requestAnimationFramePolyfill';
 /**
  * Пример вызова
  * var interceptor = new Interceptor(element);
@@ -44,22 +44,25 @@ export class Interceptor {
   // Если введены валидные данные, то отображаит их и перемещает курсор
   // в противном случае ничего не происходит
   __validate(new_value, selection, offset) {
+      // Использование setTimeout для исправления не правильного поведения каретки на Samsung устройствах
+      requestAnimationFramePolyfill(() => {
 
-    let caretController = new CaretController(this.old_selection, selection, offset);
+          let caretController = new CaretController(this.old_selection, selection, offset);
 
-    var valid_value = this.validation.getValidValue(this.old_value, new_value, caretController);
+          var valid_value = this.validation.getValidValue(this.old_value, new_value, caretController);
 
-    this.element.value = typeof this.interceptFn === 'function'
-      ? this.interceptFn(valid_value)
-      : valid_value;
+          this.element.value = typeof this.interceptFn === 'function'
+              ? this.interceptFn(valid_value)
+              : valid_value;
 
-    // Смещаем курсор, если значение валидно и оставляем на месте, если не валидно
-    let position = caretController.currentSelection;
+          // Смещаем курсор, если значение валидно и оставляем на месте, если не валидно
+          let position = caretController.currentSelection;
 
-    if (typeof(this.element.setSelectionRange) == 'function') {
-        this.element.setSelectionRange(position, position);
-    }
-    this.old_selection = position;
+          if (typeof(this.element.setSelectionRange) == 'function') {
+              this.element.setSelectionRange(position, position);
+          }
+          this.old_selection = position;
+      });
   }
 
   __onInput(event) {
