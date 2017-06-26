@@ -1,7 +1,6 @@
 import {CaretController} from './CaretController';
 import {Validation} from './Validation';
-import requestAnimationFramePolyfill from '../requestAnimationFramePolyfill'
-
+import requestAnimationFramePolyfill from '../requestAnimationFramePolyfill';
 /**
  * Пример вызова
  * var interceptor = new Interceptor(element);
