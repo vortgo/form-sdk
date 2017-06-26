@@ -14,94 +14,94 @@ import requestAnimationFramePolyfill from '../requestAnimationFramePolyfill'
  */
 export class Interceptor {
 
-    constructor(element) {
+  constructor(element) {
 
-        this.element = element;
-        this.validation = new Validation();
+    this.element = element;
+    this.validation = new Validation();
 
-        this.element.addEventListener('paste', this.__onPaste.bind(this), false);
-        this.element.addEventListener('input', this.__onInput.bind(this));
-        this.element.addEventListener('keydown', this.__onKeydown.bind(this));
-        this.old_value = '';
-        this.old_selection = 0;
+    this.element.addEventListener('paste', this.__onPaste.bind(this), false);
+    this.element.addEventListener('input', this.__onInput.bind(this));
+    this.element.addEventListener('keydown', this.__onKeydown.bind(this));
+    this.old_value = '';
+    this.old_selection = 0;
+  }
+
+  intercept(fn) {
+    this.interceptFn = fn;
+    return this;
+  }
+
+  pattern(pattern) {
+    this.validation.pattern = pattern;
+    return this;
+  }
+
+  mask(mask, delimiter = '') {
+    this.validation.opts = {mask, delimiter};
+    return this;
+  }
+
+  // Проверяет пользовательский ввод
+  // Если введены валидные данные, то отображаит их и перемещает курсор
+  // в противном случае ничего не происходит
+  __validate(new_value, selection, offset) {
+      // Использование setTimeout для исправления не правильного поведения каретки на Samsung устройствах
+      requestAnimationFramePolyfill(() => {
+
+          let caretController = new CaretController(this.old_selection, selection, offset);
+
+          var valid_value = this.validation.getValidValue(this.old_value, new_value, caretController);
+
+          this.element.value = typeof this.interceptFn === 'function'
+              ? this.interceptFn(valid_value)
+              : valid_value;
+
+          // Смещаем курсор, если значение валидно и оставляем на месте, если не валидно
+          let position = caretController.currentSelection;
+
+          if (typeof(this.element.setSelectionRange) == 'function') {
+              this.element.setSelectionRange(position, position);
+          }
+          this.old_selection = position;
+      });
+  }
+
+  __onInput(event) {
+    let new_value = this.element.value,
+        selection = this.element.selectionStart,
+        offset = 1;
+
+    if (new_value === this.old_value) {
+      event.preventDefault();
+      return false;
     }
 
-    intercept(fn) {
-        this.interceptFn = fn;
-        return this;
-    }
+    this.__validate(new_value, selection, offset);
+  }
 
-    pattern(pattern) {
-        this.validation.pattern = pattern;
-        return this;
-    }
+  __onPaste(event) {
+    let text = event.clipboardData.getData('text'),
+        value_before_caret = this.element.value.substr(0, this.element.selectionStart),
+        value_after_caret = this.element.value.substr(this.element.selectionEnd),
+        new_value = value_before_caret + text + value_after_caret,
+        selection = this.element.selectionStart + text.length,
+        offset = text.length;
 
-    mask(mask, delimiter = '') {
-        this.validation.opts = {mask, delimiter};
-        return this;
-    }
+    this.__validate(new_value, selection, offset);
+    event.preventDefault();
+  }
 
-    // Проверяет пользовательский ввод
-    // Если введены валидные данные, то отображаит их и перемещает курсор
-    // в противном случае ничего не происходит
-    __validate(new_value, selection, offset) {
-        // Использование setTimeout для исправления не правильного поведения каретки на Samsung устройствах
-        requestAnimationFramePolyfill(() => {
+  // Предоставляет возможность перехватывать пользовательские события
+  // Например, может понадобиться поведение для событий blur и focus
+  interceptEvent(eventType, handler) {
+    this.element.addEventListener(eventType, handler);
+    return this;
+  }
 
-            let caretController = new CaretController(this.old_selection, selection, offset);
-
-            var valid_value = this.validation.getValidValue(this.old_value, new_value, caretController);
-
-            this.element.value = typeof this.interceptFn === 'function'
-                ? this.interceptFn(valid_value)
-                : valid_value;
-
-            // Смещаем курсор, если значение валидно и оставляем на месте, если не валидно
-            let position = caretController.currentSelection;
-
-            if (typeof(this.element.setSelectionRange) == 'function') {
-                this.element.setSelectionRange(position, position);
-            }
-            this.old_selection = position;
-        });
-    }
-
-    __onInput(event) {
-        let new_value = this.element.value,
-            selection = this.element.selectionStart,
-            offset = 1;
-
-        if (new_value === this.old_value) {
-            event.preventDefault();
-            return false;
-        }
-
-        this.__validate(new_value, selection, offset);
-    }
-
-    __onPaste(event) {
-        let text = event.clipboardData.getData('text'),
-            value_before_caret = this.element.value.substr(0, this.element.selectionStart),
-            value_after_caret = this.element.value.substr(this.element.selectionEnd),
-            new_value = value_before_caret + text + value_after_caret,
-            selection = this.element.selectionStart + text.length,
-            offset = text.length;
-
-        this.__validate(new_value, selection, offset);
-        event.preventDefault();
-    }
-
-    // Предоставляет возможность перехватывать пользовательские события
-    // Например, может понадобиться поведение для событий blur и focus
-    interceptEvent(eventType, handler) {
-        this.element.addEventListener(eventType, handler);
-        return this;
-    }
-
-    // Нужно для считывания позиции курсора при перемещении по полю ввода с помощью кнопок-стрелок
-    __onKeydown() {
-        this.old_selection = this.element.selectionStart;
-        this.old_value = this.element.value;
-    }
+  // Нужно для считывания позиции курсора при перемещении по полю ввода с помощью кнопок-стрелок
+  __onKeydown() {
+    this.old_selection = this.element.selectionStart;
+    this.old_value = this.element.value;
+  }
 
 }
