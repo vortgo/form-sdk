@@ -1,6 +1,6 @@
 import {CaretController} from './CaretController';
 import {Validation} from './Validation';
-import requestAnimationFramePolyfill from '../requestAnimationFramePolyfill';
+import androidInputPolyfill from '../androidInputPolyfill';
 /**
  * Пример вызова
  * var interceptor = new Interceptor(element);
@@ -62,8 +62,8 @@ export class Interceptor {
   }
 
   __onInput(event) {
-    // Использование setTimeout для исправления не правильного поведения каретки на Samsung устройствах
-    requestAnimationFramePolyfill(() => {
+    // Использование setTimeout для исправления не правильного поведения каретки на Samsung и android устройствах
+      androidInputPolyfill(() => {
       let new_value = this.element.value,
           selection = this.element.selectionStart,
           offset = 1;

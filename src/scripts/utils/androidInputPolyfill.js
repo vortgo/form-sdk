@@ -1,21 +1,17 @@
 import isSamsung from './isSamsung'
+import getAndroidVersion from './getAndroidVersion'
 
-export default function requestAnimationFramePolyfill(callback) {
+export default function androidInputPolyfill(callback) {
     //проверка для исправления проблем с курсором на моб устройствах в полях ввода с маской
     try {
-        if (isSamsung) {
-            if ('requestAnimationFrame' in window && typeof requestAnimationFrame === 'function') {
-                requestAnimationFrame(callback);
-            } else {
-                setTimeout(callback, 0);
-            }
+        if (parseInt(getAndroidVersion()) < 6 || isSamsung) {
+            setTimeout(callback, 10);
         } else {
             callback()
         }
     } catch (error) {
         callback();
         console.error(error);
-
     }
 
 
