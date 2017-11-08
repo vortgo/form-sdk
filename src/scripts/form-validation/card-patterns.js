@@ -40,8 +40,8 @@ export const card_patterns = [
         card_mask: '#### #### #### ####'
     },
     {
-        regular_expression: /^5[1-5][0-9]{14}$/,
-        partial_regular_expression: /^5[1-5]/,
+        regular_expression: /^5[1-5][0-9]{14}|222647[0-9]{10}$/,
+        partial_regular_expression: /^5[1-5]|222647/,
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
