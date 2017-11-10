@@ -40,8 +40,32 @@ export const card_patterns = [
         card_mask: '#### #### #### ####'
     },
     {
+        regular_expression: /^39[0-9]{14,17}$/,
+        partial_regular_expression: /^39/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: true,
+        card_brand_name: 'DINERS CLUB',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
+        regular_expression: /^3852|3[0-3][0-9]{12,17}$/,
+        partial_regular_expression: /^(3852|3[0-3])/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: false,
+        card_brand_name: 'DINERS CLUB',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
         regular_expression: /^5[1-5][0-9]{14}|222647[0-9]{10}$/,
-        partial_regular_expression: /^5[1-5]|222647/,
+        partial_regular_expression: /^(5[1-5]|222647)/,
+        pattern: /^[0-9]{0,16}/,
+        luhn_algorithm: true,
+        card_brand_name: 'MASTERCARD',
+        card_mask: '#### #### #### ####'
+    },
+    {
+        regular_expression: /^222[1-9][0-9]{12}|22[3-9][0-9]{13}|2[3-6][0-9]{14}|27[0-1][0-9]{13}|2720[0-9]{12}$/,
+        partial_regular_expression: /^(222|22|27|2720)/,
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
@@ -88,20 +112,28 @@ export const card_patterns = [
         card_mask: '#### #### #### ####'
     },
     {
-        regular_expression: /^(6706|6771|6709)[0-9]{12,15}$/,
-        partial_regular_expression: /^(6706|6771|6709)/,
+        regular_expression: /^(6304|6706|6771|6709)[0-9]{12,15}$/,
+        partial_regular_expression: /^(6304|6706|6771|6709)/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'LASER',
         card_mask: '#### #### #### #### ###'
     },
     {
-        regular_expression: /^(5018|5020|5038|6304|6759|676[1-3])[0-9]{8,15}$/,
-        partial_regular_expression: /^(5018|5020|5038|6304|6759|676[1-3])/,
+        regular_expression: /^(5018|5020|5038|6304|6759|6799|676[1-3])[0-9]{8,15}$/,
+        partial_regular_expression: /^(5018|5020|5038|6304|6759|6799|676[1-3])/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'MAESTRO',
         card_mask: '#### #### #### #### ###'
+    },
+    {
+        regular_expression: /^(6331)[0-9]{8,12}$/,
+        partial_regular_expression: /^(6331)/,
+        pattern: /^[0-9]{0,16}/,
+        luhn_algorithm: true,
+        card_brand_name: 'SWITCH',
+        card_mask: '#### #### #### ####'
     },
     {
         regular_expression: /^62[0-9]{14,17}$/,
@@ -129,7 +161,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^50[0-9]{14,17}$/,
-        partial_regular_expression: /^50/,
+        partial_regular_expression: /^(50[0-9])/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'AURA',
@@ -206,6 +238,38 @@ export const card_patterns = [
         luhn_algorithm: false,
         card_brand_name: 'MAESTRO',
         card_mask: '#### #### #### #### ##'
+    },
+    {
+        regular_expression: /^7444[0-9]{12,15}$/,
+        partial_regular_expression: /^(7444)/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: false,
+        card_brand_name: 'MAESTRO',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
+        regular_expression: /^5[6-9][0-9]{14,17}$/,
+        partial_regular_expression: /^5/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: true,
+        card_brand_name: 'MAESTRO',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
+        regular_expression: /^5[6-9][0-9]{14,17}$/,
+        partial_regular_expression: /^5/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: true,
+        card_brand_name: 'MAESTRO',
+        card_mask: '#### #### #### #### ###'
+    },
+    {
+        regular_expression: /^63[0-9]{13,16}|64[0-3]{13,16}|6[6-9][0-9]{14,17}$/,
+        partial_regular_expression: /^(63[0-9]|64[0-3]|6[6-9])/,
+        pattern: /^[0-9]{0,19}/,
+        luhn_algorithm: false,
+        card_brand_name: 'MAESTRO',
+        card_mask: '#### #### #### #### ###'
     },
     {
         regular_expression: /^63[7-9][0-9]{13}$/,
