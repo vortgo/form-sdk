@@ -20,6 +20,7 @@ export class CardNumber extends Input {
         return formatCardNumber(card_number);
     }
 
+
     // (card_number: String) => Boolean
     isValid() {
         const card_number = this.getCardNumber(this.model.get(this.full_name));
@@ -29,6 +30,7 @@ export class CardNumber extends Input {
             this.interceptor
                 .pattern(card_type.pattern || this.cardParams.pattern)
                 .mask(card_type.card_mask, ' ');
+            this.model.set('card_brand_name', card_type.card_brand_name);
         }
 
         return card_type && Object.keys(card_type).length > 0
