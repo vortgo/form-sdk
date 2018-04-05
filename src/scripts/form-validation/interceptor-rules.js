@@ -10,7 +10,7 @@ export const rules = {
         delimiter: ''
     },
     card_exp_month: {
-        pattern: /^(0[1-9]?|1[0-2]?)?$/,
+        pattern: /^([1-9]?|0[1-9]?|1[0-2]?)?$/,
         mask: '',
         delimiter: ''
     },
