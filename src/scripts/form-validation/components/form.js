@@ -44,7 +44,6 @@ export class Form extends Component {
             sendForm(this.element, this.model.params);
         } else {
             console.log('Form is invalid');
-            console.log(this.model.params);
 
             if (this.invalidFields.length) {
                 this.invalidFields[0].focus();
