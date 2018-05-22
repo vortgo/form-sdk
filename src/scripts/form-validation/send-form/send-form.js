@@ -5,7 +5,7 @@ import {showErrors} from './error-result';
 import {decline} from './decline-result';
 import {approve} from './approved-result';
 import {verify} from './verify-result';
-import {processing} from '../utils/trackingEvent';
+import {trackProcessing} from '../utils/trackingEvent';
 
 import {opts} from './spinner-opts';
 import {FORM_NAME} from '../constants';
@@ -75,7 +75,7 @@ export function sendForm($form, data) {
       }
 
       pushPostMessageWithResponse(res.body);
-      processing();
+        trackProcessing();
 
       if (res.body.order) {
         switch (res.body.order.status) {
@@ -93,7 +93,7 @@ export function sendForm($form, data) {
           case STATUS_DECLINED:
             console.warn('order declined');
             if (res.body.redirect_url) {
-                processing(STATUS_DECLINED);
+                trackProcessing(STATUS_DECLINED);
               decline(res.body.redirect_url);
             }
             stopSpinner();
@@ -102,7 +102,7 @@ export function sendForm($form, data) {
           case STATUS_APPROVED:
             console.log('order approved');
             if (res.body.redirect_url) {
-                processing(STATUS_APPROVED);
+                trackProcessing(STATUS_APPROVED);
               approve(res.body.redirect_url);
             }
             stopSpinner();
@@ -111,7 +111,7 @@ export function sendForm($form, data) {
           case STATUS_VERIFY:
             console.log('order verify');
             if (res.body.verify_url) {
-                processing(STATUS_VERIFY);
+                trackProcessing(STATUS_VERIFY);
               verify(res.body.verify_url);
             }
             stopSpinner();
@@ -190,7 +190,7 @@ function statusRequest(checkSum) {
           case STATUS_DECLINED:
             console.warn('order declined');
             if (res.body.redirect_url) {
-              processing(STATUS_DECLINED);
+                trackProcessing(STATUS_DECLINED);
               decline(res.body.redirect_url);
             }
             stopSpinner();
@@ -199,7 +199,7 @@ function statusRequest(checkSum) {
           case STATUS_APPROVED:
             console.log('order approved');
             if (res.body.redirect_url) {
-              processing(STATUS_APPROVED);
+                trackProcessing(STATUS_APPROVED);
               approve(res.body.redirect_url);
             }
             stopSpinner();
@@ -208,7 +208,7 @@ function statusRequest(checkSum) {
           case STATUS_VERIFY:
             console.log('order verify');
             if (res.body.verify_url) {
-              processing(STATUS_VERIFY);
+                trackProcessing(STATUS_VERIFY);
               verify(res.body.verify_url);
             }
             stopSpinner();
