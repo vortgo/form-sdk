@@ -12,7 +12,7 @@ export function trackErrorEvent(fields) {
     throwEvent(event)
 }
 
-export function processing(status) {
+export function trackProcessing(status) {
     let event;
     if (status) {
         event = new CustomEvent('processingResult',
