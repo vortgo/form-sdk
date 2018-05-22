@@ -1,5 +1,6 @@
 import {Component} from '../../utils/validation';
 import {sendForm} from '../send-form';
+import {trackErrorEvent} from '../utils/trackingEvent';
 
 export class Form extends Component {
 
@@ -42,12 +43,17 @@ export class Form extends Component {
 
         if (this.formIsValid()) {
             sendForm(this.element, this.model.params);
+
         } else {
             console.log('Form is invalid');
 
             if (this.invalidFields.length) {
                 this.invalidFields[0].focus();
             }
+
+            //event for matomo tracking
+            trackErrorEvent(this.invalidFields);
+
         }
 
     }
