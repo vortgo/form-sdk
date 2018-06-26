@@ -5,7 +5,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,15}/,
         luhn_algorithm: true,
         card_brand_name: 'AMERICAN EXPRESS',
-        card_mask: '#### #### #### ###'
+        card_mask: '#### #### #### ###',
+        class_name: 'amex'
     },
     {
         regular_expression: /^5019[0-9]{12}$/,
@@ -13,7 +14,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DANKORT',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'dankort'
     },
     {
         regular_expression: /^30[0-5][0-9]{11}$/,
@@ -21,7 +23,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,14}/,
         luhn_algorithm: true,
         card_brand_name: 'DINERS CLUB - CARTE BLANCHE',
-        card_mask: '#### #### #### ##'
+        card_mask: '#### #### #### ##',
+        class_name: 'diners'
     },
     {
         regular_expression: /^36[0-9]{12}$/,
@@ -29,7 +32,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,14}/,
         luhn_algorithm: true,
         card_brand_name: 'DINERS CLUB - INTERNATIONAL',
-        card_mask: '#### #### #### ##'
+        card_mask: '#### #### #### ##',
+        class_name: 'diners'
     },
     {
         regular_expression: /^54[0-9]{14}$/,
@@ -37,7 +41,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DINERS CLUB - USA & CANADA',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'diners'
     },
     {
         regular_expression: /^39[0-9]{14,17}$/,
@@ -45,7 +50,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'DINERS CLUB',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'diners'
     },
     {
         regular_expression: /^3852|3[0-3][0-9]{12,17}$/,
@@ -53,7 +59,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false,
         card_brand_name: 'DINERS CLUB',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'diners'
     },
     {
         regular_expression: /^5[1-5][0-9]{14}|222647[0-9]{10}$/,
@@ -61,7 +68,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'mastercard'
     },
     {
         regular_expression: /^222[1-9][0-9]{12}|22[3-9][0-9]{13}|2[3-6][0-9]{14}|27[0-1][0-9]{13}|2720[0-9]{12}$/,
@@ -69,7 +77,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'mastercard'
     },
     {
         regular_expression: /^6011[0-9]{12}$/,
@@ -77,7 +86,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'discover'
     },
     {
         regular_expression: /^64[4-9][0-9]{13}$/,
@@ -85,7 +95,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'discover'
     },
     {
         regular_expression: /^65[0-9]{14}$/,
@@ -93,7 +104,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'discover'
     },
     {
         regular_expression: /^622(12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|91[0-9]|92[0-5])[0-9]{10}$/,
@@ -101,7 +113,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'discover'
     },
     {
         regular_expression: /^(?:2131|1800|35(2[8-9]|[3-8][0-9])[0-9])[0-9]{11}$/,
@@ -109,7 +122,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'JCB',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'jcb'
     },
     {
         regular_expression: /^(6304|6706|6771|6709)[0-9]{12,15}$/,
@@ -117,7 +131,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'LASER',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'laser'
     },
     {
         regular_expression: /^(5018|5020|5038|6304|6759|6799|676[1-3])[0-9]{8,15}$/,
@@ -125,7 +140,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'MAESTRO',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'maestro'
     },
     {
         regular_expression: /^(6331)[0-9]{8,12}$/,
@@ -133,7 +149,9 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'SWITCH',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'switch'
+
     },
     {
         regular_expression: /^62[0-9]{14,17}$/,
@@ -141,7 +159,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false,
         card_brand_name: 'CHINA UNIONPAY',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'unionpay'
     },
     {
         regular_expression: /^506(099|1([0-8][0-9]|9[0-8]))[0-9]{10,13}$/,
@@ -149,7 +168,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false,
         card_brand_name: 'VERVE',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'verve'
     },
     {
         regular_expression: /^(521090|528649|528668|551609)[0-9]{10,13}$/,
@@ -157,7 +177,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false,
         card_brand_name: 'VERVE',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'verve'
     },
     {
         regular_expression: /^50[0-9]{14,17}$/,
@@ -165,7 +186,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'AURA',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'aura'
     },
     {
         regular_expression: /^(401178|401179|431274|438935|451416|457393|457631|457632|504175|636297|4576|4011|506[6-7]|509[0-9]{3}|627780|636368|6500[3-5]|650[4-5]|6507|6509[0-2]|6516[5-7]|6550[0-5])[0-9]{0,10}$/,
@@ -173,7 +195,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'ELO',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'elo'
     },
     {
         regular_expression: /^4(026|17500|405|508|844|91[37])/,
@@ -181,7 +204,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'VISA ELECTRON',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'visa_electron'
     },
     {
         regular_expression: /^4[0-9]{12,18}$/,
@@ -189,7 +213,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'VISA',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'visa'
     },
     {
         regular_expression: /^(38|60)[0-9]{11,17}$/,
@@ -197,7 +222,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'HIPERCARD',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'hipecard'
     },
     {
         regular_expression: /^636[0-9]{13,17}$/,
@@ -205,7 +231,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'INTERPAYMENT',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'interpayment'
     },
     {
         regular_expression: /^220[0-4][0-9]{12}$/,
@@ -213,7 +240,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'NSPK MIR',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'nspk_mir'
     },
     {
         regular_expression: /^1[0-9]{14}$/,
@@ -221,7 +249,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,15}/,
         luhn_algorithm: true,
         card_brand_name: 'UATP',
-        card_mask: '#### #### #### ###'
+        card_mask: '#### #### #### ###',
+        class_name: 'uatp'
     },
     {
         regular_expression: /^5392[0-9]{12}$/,
@@ -229,7 +258,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'CARDGUARD EAD BG ILS',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'cardguard'
     },
     {
         regular_expression: /^(676280|639002)[0-9]{12}$/,
@@ -237,7 +267,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,18}/,
         luhn_algorithm: false,
         card_brand_name: 'MAESTRO',
-        card_mask: '#### #### #### #### ##'
+        card_mask: '#### #### #### #### ##',
+        class_name: 'maestro'
     },
     {
         regular_expression: /^7444[0-9]{12,15}$/,
@@ -245,7 +276,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false,
         card_brand_name: 'MAESTRO',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'maestro'
     },
     {
         regular_expression: /^5[6-9][0-9]{14,17}$/,
@@ -253,7 +285,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'MAESTRO',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'maestro'
     },
     {
         regular_expression: /^5[6-9][0-9]{14,17}$/,
@@ -261,7 +294,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'MAESTRO',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'maestro'
     },
     {
         regular_expression: /^63[0-9]{13,16}|64[0-3]{13,16}|6[6-9][0-9]{14,17}$/,
@@ -269,7 +303,8 @@ export const card_patterns = [
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false,
         card_brand_name: 'MAESTRO',
-        card_mask: '#### #### #### #### ###'
+        card_mask: '#### #### #### #### ###',
+        class_name: 'maestro'
     },
     {
         regular_expression: /^63[7-9][0-9]{13}$/,
@@ -277,6 +312,7 @@ export const card_patterns = [
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'INSTAPAYMENT',
-        card_mask: '#### #### #### ####'
+        card_mask: '#### #### #### ####',
+        class_name: 'instapayment'
     }
 ];

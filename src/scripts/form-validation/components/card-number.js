@@ -20,11 +20,31 @@ export class CardNumber extends Input {
         return formatCardNumber(card_number);
     }
 
+    setCardTypeClassName(card_type) {
+
+        if (card_type) {
+            this.parent.classList.forEach(item=>{
+                if(item !== 'card_number' && item !== 'valid' && item !==  'dirty' && item !== 'error' && item !== card_type.class_name){
+                    this.parent.classList.remove(item)
+                }
+            });
+            this.parent.classList.add(card_type.class_name);
+        } else {
+            this.parent.classList.forEach(item=>{
+                if(item !== 'card_number' && item !== 'valid' && item !==  'dirty' && item !== 'error' ){
+                    this.parent.classList.remove(item)
+                }
+            });
+        }
+    }
 
     // (card_number: String) => Boolean
     isValid() {
         const card_number = this.getCardNumber(this.model.get(this.full_name));
         const card_type = this.getCardTypes(card_number)[0];
+
+        console.log(card_type);
+        this.setCardTypeClassName(card_type);
 
         if (card_type) {
             this.interceptor
@@ -37,5 +57,8 @@ export class CardNumber extends Input {
             && card_type.regular_expression.test(card_number)
             && (!card_type.luhn_algorithm || validate(card_number));
     }
+
+
+
 
 }
