@@ -114,6 +114,11 @@ mixin expiryDateSelect
                 description = attributes.description
                 )
 
+mixin expiryDateSmall
+    +input("Card exp date", "card_exp_date", "MM/YY", "", "text")(
+    maxlength="5")
+
+
 mixin cardCvv
     +input("Security number", "card_cvv", "1234", "", "tel")(
         maxlength="4",

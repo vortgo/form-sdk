@@ -2,6 +2,7 @@ import {CardNumber} from './components/card-number';
 import {CardHolder} from './components/card-holder';
 import {CardExpMonth} from './components/card-exp-month';
 import {CardExpYear} from './components/card-exp-year';
+import {CardExpDate} from './components/card-exp-date';
 import {CardExpMonthSelect} from './components/card-exp-month-select';
 import {CardExpYearSelect} from './components/card-exp-year-select';
 import {CardCVV} from './components/card-cvv';
@@ -26,6 +27,13 @@ export const componentList = [
         selector: '.card_holder input',
         component: CardHolder,
         model: true,
+        defaultValue: ''
+    },
+    {
+        name: 'card_exp_date',
+        selector: '.card_exp_date input',
+        component: CardExpDate,
+        model: false,
         defaultValue: ''
     },
     {
