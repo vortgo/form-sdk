@@ -19,7 +19,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^(222[1-9][0-9]{12}|22[3-9][0-9]{13}|2[3-6][0-9]{14}|27[0-1][0-9]{13}|2720[0-9]{12})$/,
-        partial_regular_expression: /^(222|22[3-9]|27|2[3-6]|27[0-1]|2720)/,
+        partial_regular_expression: /^(222[1-9]|22[3-9]|27|2[3-6]|27[0-1]|2720)/,
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
