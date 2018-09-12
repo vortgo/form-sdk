@@ -19,7 +19,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^(222[1-9][0-9]{12}|22[3-9][0-9]{13}|2[3-6][0-9]{14}|27[0-1][0-9]{13}|2720[0-9]{12})$/,
-        partial_regular_expression: /^(222|22|27|23|24|25|26|271|2720)/,
+        partial_regular_expression: /^(222[1-9]|22[3-9]|27|2[3-6]|27[0-1]|2720)/,
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
@@ -28,7 +28,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^((60110|6011[2-4])[0-9]{11,14}|(601174|60117[7-9]|60118[6-9]|60119[0-9])[0-9]{10,13})$/,
-        partial_regular_expression: /^(6011[0234]|60117[4789]|60118[6-9]|60119[0-9])/,
+        partial_regular_expression: /^((60110|6011[2-4])|(601174|60117[7-9]|60118[6-9]|60119[0-9]))/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
@@ -36,8 +36,8 @@ export const card_patterns = [
         class_name: 'card_type_discover'
     },
     {
-        regular_expression: /^((62212[6-9]|62292[0-5])[0-9]{10,13}|(6229[0-1]|6221{3-9})[0-9]{11,14}|(628[2-8]|622[2-8])[0-9]{12,15}|(64[4-9]|62[4-6])[0-9]{13,16}|65[0-9]{14,17})$/,
-        partial_regular_expression: /^(62212[6-9]|62292[0-5]|6229[0-1]|6221{3-9}|628[2-8]|622[2-8]|64[4-9]|62[4-6]|65[0-9])/,
+        regular_expression: /^((62212[6-9]|62292[0-5])[0-9]{10,13}|(6229[0-1]|6221[3-9])[0-9]{11,14}|(628[2-8]|622[2-8])[0-9]{12,15}|(64[4-9]|62[4-6])[0-9]{13,16}|65[0-9]{14,17})$/,
+        partial_regular_expression: /^(62212[6-9]|62292[0-5]|6229[0-1]|6221[3-9]|628[2-8]|622[2-8]|64[4-9]|62[4-6]|65[0-9])/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
@@ -118,7 +118,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^((30[0-5]|35[3-8])[0-9]{13,16}|(3095|352[8-9])[0-9]{12,15}|36[0-9]{12,17}|3[8-9][0-9]{14,17})$/,
-        partial_regular_expression: /^(30[0-5]|3095|35[2-8]|36|3[8-9])/,
+        partial_regular_expression: /^(30[0-5]|3095|352[8-9]|36|3[8-9])/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
