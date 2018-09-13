@@ -19,7 +19,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^(222[1-9][0-9]{12}|22[3-9][0-9]{13}|2[3-6][0-9]{14}|27[0-1][0-9]{13}|2720[0-9]{12})$/,
-        partial_regular_expression: /^(222[1-9]|22[3-9]|27|2[3-6]|27[0-1]|2720)/,
+        partial_regular_expression: /^(222[1-9]|22[3-9]|2[3-6]|27[0-1]|2720)/,
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: true,
         card_brand_name: 'MASTERCARD',
@@ -109,7 +109,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^((6[6-9]|63)[0-9]{10,17}|(62[397]|64[0-3])[0-9]{9,16}|(601[023456789]|628[01])[0-9]{8,15})$/,
-        partial_regular_expression: /^((6[6-9]|63)[0-9]|(62[397]|64[0-3])[0-9]|(601[023456789]|628[01])[0-9])/,
+        partial_regular_expression: /^((6[6-9]|63)[0-9]|(62[397]|64[0-3])[0-9]|(601[023456789]|628[01]))/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false, //could fall RuPay cards
         card_brand_name: 'MAESTRO',
@@ -118,7 +118,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^((30[0-5]|35[3-8])[0-9]{13,16}|(3095|352[8-9])[0-9]{12,15}|36[0-9]{12,17}|3[8-9][0-9]{14,17})$/,
-        partial_regular_expression: /^(30[0-5]|3095|352[8-9]|36|3[8-9])/,
+        partial_regular_expression: /^(30[0-5]|35[3-8]|3095|352[8-9]|36|3[8-9])/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: true,
         card_brand_name: 'DISCOVER',
@@ -136,7 +136,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^50[0-9]{10,17}$/,
-        partial_regular_expression: /^(50[0-9])/,
+        partial_regular_expression: /^(50)/,
         pattern: /^[0-9]{0,19}/,
         luhn_algorithm: false, //some cards could fail
         card_brand_name: 'MAESTRO',
@@ -154,7 +154,7 @@ export const card_patterns = [
     },
     {
         regular_expression: /^9792[0-8][0-9]{11}$/,
-        partial_regular_expression: /^(9792[0-8][0-9])/,
+        partial_regular_expression: /^(9792[0-8])/,
         pattern: /^[0-9]{0,16}/,
         luhn_algorithm: false,
         card_brand_name: 'TROY',
