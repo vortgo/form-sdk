@@ -23,18 +23,20 @@ export class CardNumber extends Input {
     setCardTypeClassName(card_type) {
 
         if (card_type) {
-            this.parent.classList.forEach(item=>{
-                if(item !== 'card_number' && item !== 'valid' && item !==  'dirty' && item !== 'error' && item !== card_type.class_name){
-                    this.parent.classList.remove(item)
+            for (let i = 0; i <= this.parent.classList.length; i++) {
+                if (this.parent.classList[i] !== 'card_number' && this.parent.classList[i] !== 'valid' && this.parent.classList[i] !== 'dirty' && this.parent.classList[i] !== 'error' && this.parent.classList[i] !== card_type.class_name) {
+                    this.parent.classList.remove(this.parent.classList[i])
                 }
-            });
+            }
             this.parent.classList.add(card_type.class_name);
         } else {
-            this.parent.classList.forEach(item=>{
-                if(item !== 'card_number' && item !== 'valid' && item !==  'dirty' && item !== 'error' ){
-                    this.parent.classList.remove(item)
+            for (let i = 0; i <= this.parent.classList.length; i++) {
+                if (this.parent.classList[i] !== 'card_number' && this.parent.classList[i] !== 'valid' && this.parent.classList[i] !== 'dirty' && this.parent.classList[i] !== 'error') {
+                    this.parent.classList.remove(this.parent.classList[i])
                 }
-            });
+            }
+
+
         }
     }
 

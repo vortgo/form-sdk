@@ -2,8 +2,10 @@
  * Send fields with error for tracking
  * @param fields
  */
-export function trackErrorEvent(fields) {
+import {ieEventPoly} from './ieEventPolyfil';
 
+export function trackErrorEvent(fields) {
+    ieEventPoly();
     let event = new CustomEvent('formError', {
         bubbles: true,
         cancelable: true,
@@ -13,6 +15,7 @@ export function trackErrorEvent(fields) {
 }
 
 export function trackProcessing(status) {
+    ieEventPoly();
     let event;
     if (status) {
         event = new CustomEvent('processingResult',
