@@ -45,7 +45,7 @@ export const rules = {
         delimiter: ''
     },
     zip_code: {
-        pattern: /^\d{0,5}$/,
+        pattern: /^\d{0,9}$/,
         mask: '',
         delimiter: ''
     },
