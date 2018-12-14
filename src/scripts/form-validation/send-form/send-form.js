@@ -189,7 +189,6 @@ function statusRequest(checkSum) {
       console.log('get answer', res);
       pushPostMessageWithResponse(res.body);
       if (res.body.order) {
-
         switch (res.body.order.status) {
 
           case STATUS_PROCESSING:
