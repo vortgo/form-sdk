@@ -105,7 +105,7 @@ export function sendForm($form, data) {
             console.log('order approved');
             if (res.body.redirect_url) {
                 trackProcessing(STATUS_APPROVED);
-                authOk(res.body.redirect_url);
+                approve(res.body.redirect_url);
             }
             stopSpinner();
             break;
@@ -114,7 +114,7 @@ export function sendForm($form, data) {
                 console.log('order auth_ok');
                 if (res.body.redirect_url) {
                     trackProcessing(STATUS_AUTH_OK);
-                    approve(res.body.redirect_url);
+                    authOk(res.body.redirect_url);
                 }
                 stopSpinner();
                 break;
