@@ -4,6 +4,7 @@ import 'spin/dist/spin.min';
 import {showErrors} from './error-result';
 import {decline} from './decline-result';
 import {approve} from './approved-result';
+import {authOk} from './auth-ok-result';
 import {verify} from './verify-result';
 import {trackProcessing} from '../utils/trackingEvent';
 
@@ -14,10 +15,10 @@ import MessagingSystem from "../../messaging/MessagingSystem";
 import OrderStatus from "../../messaging/messageTypes/OrderStatus";
 
 import {
-  STATUS_APPROVED,
-  STATUS_DECLINED,
-  STATUS_PROCESSING,
-  STATUS_VERIFY
+    STATUS_APPROVED, STATUS_AUTH_OK,
+    STATUS_DECLINED,
+    STATUS_PROCESSING,
+    STATUS_VERIFY
 } from './order-statuses';
 
 import {
@@ -103,10 +104,19 @@ export function sendForm($form, data) {
             console.log('order approved');
             if (res.body.redirect_url) {
                 trackProcessing(STATUS_APPROVED);
-              approve(res.body.redirect_url);
+                authOk(res.body.redirect_url);
             }
             stopSpinner();
             break;
+
+            case STATUS_AUTH_OK:
+                console.log('order auth_ok');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    approve(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
 
           case STATUS_VERIFY:
             console.log('order verify');
@@ -178,6 +188,7 @@ function statusRequest(checkSum) {
       console.log('get answer', res);
       pushPostMessageWithResponse(res.body);
       if (res.body.order) {
+
         switch (res.body.order.status) {
 
           case STATUS_PROCESSING:
@@ -204,6 +215,15 @@ function statusRequest(checkSum) {
             }
             stopSpinner();
             break;
+
+            case STATUS_AUTH_OK:
+                console.log('order auth_ok');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authOk(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
 
           case STATUS_VERIFY:
             console.log('order verify');
