@@ -15,7 +15,8 @@ import MessagingSystem from "../../messaging/MessagingSystem";
 import OrderStatus from "../../messaging/messageTypes/OrderStatus";
 
 import {
-    STATUS_APPROVED, STATUS_AUTH_OK,
+    STATUS_APPROVED,
+    STATUS_AUTH_OK,
     STATUS_DECLINED,
     STATUS_PROCESSING,
     STATUS_VERIFY
