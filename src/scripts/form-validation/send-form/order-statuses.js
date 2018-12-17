@@ -11,3 +11,5 @@ export const STATUS_PROCESSING = 'processing';
 export const STATUS_REFUNDED = 'refunded';
 
 export const STATUS_VERIFY = '3ds_verify';
+
+export const STATUS_AUTH_OK = 'auth_ok';
