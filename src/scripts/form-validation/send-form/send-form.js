@@ -5,6 +5,7 @@ import {showErrors} from './error-result';
 import {decline} from './decline-result';
 import {approve} from './approved-result';
 import {authOk} from './auth-ok-result';
+import {authFailed} from './auth-failed-result';
 import {verify} from './verify-result';
 import {trackProcessing} from '../utils/trackingEvent';
 
@@ -17,6 +18,7 @@ import OrderStatus from "../../messaging/messageTypes/OrderStatus";
 import {
     STATUS_APPROVED,
     STATUS_AUTH_OK,
+    STATUS_AUTH_FAILED,
     STATUS_DECLINED,
     STATUS_PROCESSING,
     STATUS_VERIFY
@@ -115,6 +117,15 @@ export function sendForm($form, data) {
                 if (res.body.redirect_url) {
                     trackProcessing(STATUS_AUTH_OK);
                     authOk(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
+
+            case STATUS_AUTH_FAILED:
+                console.log('order auth_failed');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authFailed(res.body.redirect_url);
                 }
                 stopSpinner();
                 break;
@@ -221,6 +232,15 @@ function statusRequest(checkSum) {
                 if (res.body.redirect_url) {
                     trackProcessing(STATUS_AUTH_OK);
                     authOk(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
+
+            case STATUS_AUTH_FAILED:
+                console.log('order auth_failed');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authFailed(res.body.redirect_url);
                 }
                 stopSpinner();
                 break;
