@@ -40,6 +40,26 @@ export class CardNumber extends Input {
         }
     }
 
+    static setCardTypeClassNameAtCards(card_type) {
+        let card_brands_div = document.getElementsByClassName('card-brands')[0];
+        if (card_brands_div !== undefined) {
+            if (card_type) {
+                for (let i = 0; i <= card_brands_div.classList.length; i++) {
+                    if (card_brands_div.classList[i] !== card_type.class_name && card_brands_div.classList[i] !== 'card-brands') {
+                        card_brands_div.classList.remove(card_brands_div.classList[i])
+                    }
+                }
+                card_brands_div.classList.add(card_type.class_name + '_active');
+            } else {
+                for (let i = 0; i <= card_brands_div.classList.length; i++) {
+                    if (card_brands_div.classList[i] !== 'card-brands') {
+                        card_brands_div.classList.remove(card_brands_div.classList[i])
+                    }
+                }
+            }
+        }
+    }
+
     // (card_number: String) => Boolean
     isValid() {
         const card_number = this.getCardNumber(this.model.get(this.full_name));
@@ -47,6 +67,7 @@ export class CardNumber extends Input {
 
         console.log(card_type);
         this.setCardTypeClassName(card_type);
+        CardNumber.setCardTypeClassNameAtCards(card_type);
 
         if (card_type) {
             this.interceptor
