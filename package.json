@@ -10,7 +10,8 @@
     "test-server:error": "node ./test-server/server response-error",
     "test-server:process": "node ./test-server/server response-process",
     "test-server:approved": "node ./test-server/server response-approved",
-    "test-server:decline": "node ./test-server/server response-decline"
+    "test-server:decline": "node ./test-server/server response-decline",
+    "test-server:dynamic-fields": "node ./test-server/server response-dynamic-fields"
   },
   "repository": {
     "type": "git",

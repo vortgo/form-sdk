@@ -17,17 +17,15 @@ import OrderStatus from "../../messaging/messageTypes/OrderStatus";
 
 import {
     STATUS_APPROVED,
-    STATUS_AUTH_OK,
     STATUS_AUTH_FAILED,
+    STATUS_AUTH_OK,
     STATUS_DECLINED,
     STATUS_PROCESSING,
     STATUS_VERIFY
 } from './order-statuses';
 
-import {
-  FORM_SEND_TIMEOUT,
-  FORM_SEND_TIME
-} from './request-params';
+import {FORM_SEND_TIME, FORM_SEND_TIMEOUT} from './request-params';
+import {CardNumber} from "../components/card-number";
 
 function stopSpinnerWithTarget(spinner, target) {
   spinner.stop();
@@ -259,6 +257,34 @@ function statusRequest(checkSum) {
 
   target.classList.add('opaque');
   spinner.spin(target);
+}
+
+export function formFieldsRequest(data) {
+    const formFieldsUrl = document.querySelector('#signedpay-form-fields-url');
+    if (!formFieldsUrl) {
+        return null;
+    }
+    const url = formFieldsUrl.value;
+    request
+        .post(url)
+        .type('json')
+        .send(JSON.stringify(data))
+        .accept('json')
+        .set('X-Requested-With', 'XMLHttpRequest')
+        .end((err, res) => {
+            if (!res) return;
+            if (!res.body) {
+                res.body = JSON.parse(res.text)
+            }
+            if (err || !res.ok || res.body.error) {
+                return;
+            }
+            try {
+                CardNumber.manageFields(res.body.fields);
+            } catch (e) {
+                console.log(e);
+            }
+        });
 }
 
 function pushPostMessageWithResponse(response) {
