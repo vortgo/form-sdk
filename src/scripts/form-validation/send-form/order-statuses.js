@@ -15,3 +15,5 @@ export const STATUS_VERIFY = '3ds_verify';
 export const STATUS_AUTH_OK = 'auth_ok';
 
 export const STATUS_AUTH_FAILED = 'auth_failed';
+
+export const STATUS_VERIFY2 = '3ds2_verify';

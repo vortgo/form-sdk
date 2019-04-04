@@ -21,7 +21,8 @@ import {
     STATUS_AUTH_OK,
     STATUS_DECLINED,
     STATUS_PROCESSING,
-    STATUS_VERIFY
+    STATUS_VERIFY,
+    STATUS_VERIFY2
 } from './order-statuses';
 
 import {FORM_SEND_TIME, FORM_SEND_TIMEOUT} from './request-params';
@@ -133,6 +134,15 @@ export function sendForm($form, data) {
             if (res.body.verify_url) {
                 trackProcessing(STATUS_VERIFY);
               verify(res.body.verify_url);
+            }
+            stopSpinner();
+            break;
+
+          case STATUS_VERIFY2:
+            console.log('order verify');
+            if (res.body.verify_url) {
+                trackProcessing(STATUS_VERIFY2);
+                verify(res.body.verify_url);
             }
             stopSpinner();
             break;
@@ -248,6 +258,15 @@ function statusRequest(checkSum) {
             if (res.body.verify_url) {
                 trackProcessing(STATUS_VERIFY);
               verify(res.body.verify_url);
+            }
+            stopSpinner();
+            break;
+
+          case STATUS_VERIFY2:
+            console.log('order verify');
+            if (res.body.verify_url) {
+                trackProcessing(STATUS_VERIFY2);
+                verify(res.body.verify_url);
             }
             stopSpinner();
             break;
