@@ -4,6 +4,8 @@ import 'spin/dist/spin.min';
 import {showErrors} from './error-result';
 import {decline} from './decline-result';
 import {approve} from './approved-result';
+import {authOk} from './auth-ok-result';
+import {authFailed} from './auth-failed-result';
 import {verify} from './verify-result';
 import {trackProcessing} from '../utils/trackingEvent';
 
@@ -15,16 +17,16 @@ import OrderStatus from "../../messaging/messageTypes/OrderStatus";
 
 import {
     STATUS_APPROVED,
+    STATUS_AUTH_FAILED,
+    STATUS_AUTH_OK,
     STATUS_DECLINED,
     STATUS_PROCESSING,
     STATUS_VERIFY,
     STATUS_VERIFY2
 } from './order-statuses';
 
-import {
-  FORM_SEND_TIMEOUT,
-  FORM_SEND_TIME
-} from './request-params';
+import {FORM_SEND_TIME, FORM_SEND_TIMEOUT} from './request-params';
+import {CardNumber} from "../components/card-number";
 
 function stopSpinnerWithTarget(spinner, target) {
   spinner.stop();
@@ -104,10 +106,28 @@ export function sendForm($form, data) {
             console.log('order approved');
             if (res.body.redirect_url) {
                 trackProcessing(STATUS_APPROVED);
-              approve(res.body.redirect_url);
+                approve(res.body.redirect_url);
             }
             stopSpinner();
             break;
+
+            case STATUS_AUTH_OK:
+                console.log('order auth_ok');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authOk(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
+
+            case STATUS_AUTH_FAILED:
+                console.log('order auth_failed');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authFailed(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
 
           case STATUS_VERIFY:
             console.log('order verify');
@@ -215,6 +235,24 @@ function statusRequest(checkSum) {
             stopSpinner();
             break;
 
+            case STATUS_AUTH_OK:
+                console.log('order auth_ok');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authOk(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
+
+            case STATUS_AUTH_FAILED:
+                console.log('order auth_failed');
+                if (res.body.redirect_url) {
+                    trackProcessing(STATUS_AUTH_OK);
+                    authFailed(res.body.redirect_url);
+                }
+                stopSpinner();
+                break;
+
           case STATUS_VERIFY:
             console.log('order verify');
             if (res.body.verify_url) {
@@ -238,6 +276,34 @@ function statusRequest(checkSum) {
 
   target.classList.add('opaque');
   spinner.spin(target);
+}
+
+export function formFieldsRequest(data) {
+    const formFieldsUrl = document.querySelector('#signedpay-form-fields-url');
+    if (!formFieldsUrl) {
+        return null;
+    }
+    const url = formFieldsUrl.value;
+    request
+        .post(url)
+        .type('json')
+        .send(JSON.stringify(data))
+        .accept('json')
+        .set('X-Requested-With', 'XMLHttpRequest')
+        .end((err, res) => {
+            if (!res) return;
+            if (!res.body) {
+                res.body = JSON.parse(res.text)
+            }
+            if (err || !res.ok || res.body.error) {
+                return;
+            }
+            try {
+                CardNumber.manageFields(res.body.fields);
+            } catch (e) {
+                console.log(e);
+            }
+        });
 }
 
 function pushPostMessageWithResponse(response) {
