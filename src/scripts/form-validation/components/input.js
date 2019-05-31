@@ -29,7 +29,6 @@ export class Input extends Component {
     intercept(value) {
         this.model.set(this.full_name, value);
         this.dirty = true;
-        this.setValidationMark(this.isValid());
 
         return value;
     }
@@ -50,6 +49,7 @@ export class Input extends Component {
 
     setDirty() {
         if (this.dirty) {
+            this.setValidationMark(this.isValid());
             this.parent.classList.add('dirty');
         }
     }
