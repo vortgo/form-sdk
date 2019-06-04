@@ -1,10 +1,23 @@
 import {Input} from './input';
 import romanize from 'node-romanization';
+import {DEFAULT, EMPTY} from "../error-labels";
 
 
 export class Address extends Input {
     isValid() {
-        return /^(?!\s).{2,32}/.test(this.model.get(this.full_name));
+        let value = this.model.get(this.full_name);
+
+        if (value.length === 0) {
+            this.setValidationErrorToBox(EMPTY);
+            return false;
+        }
+
+        if(/^(?!\s).{2,32}/.test(value)){
+            return true;
+        }
+
+        this.setValidationErrorToBox(DEFAULT);
+        return false;
     }
 
 

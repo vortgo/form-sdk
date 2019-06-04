@@ -5,9 +5,11 @@ import { getName } from '../utils/getName';
 import {Interceptor} from '../../utils/interceptor';
 import {rules} from '../interceptor-rules';
 import {FORM_NAME} from '../constants';
+import i18next from "i18next";
 
 export class Input extends Component {
     constructor(...args) {
+
         super(...args);
 
         this.parent = getParentElement(this.element);
@@ -54,4 +56,19 @@ export class Input extends Component {
         }
     }
 
+    setValidationErrorToBox(errorType, replaceKeys = {}){
+        let message = i18next.t(getName(this.element) + '.' + errorType, replaceKeys);
+        console.log(message,i18next,getName(this.element) + '.' + errorType);
+        let childNodes = this.element.parentNode.childNodes;
+        let errorBox = null;
+
+        for (let i = 0; i < childNodes.length; i++) {
+            if (childNodes[i].className == "error-text") {
+                errorBox = childNodes[i];
+                break;
+            }
+        }
+
+        errorBox.innerHTML = message;
+    }
 }

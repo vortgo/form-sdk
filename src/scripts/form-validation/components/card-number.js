@@ -2,9 +2,12 @@ import {formFieldsRequest} from "../send-form/send-form";
 import {Input} from './input';
 import {card_patterns} from './../card-patterns';
 import {formatCardNumber} from '../utils/formatCardNumber';
+import {EMPTY, FIELD_FORMAT, SIZE} from '../error-labels';
 
 var validate = require('fast-luhn');
 
+const maxLength = 19;
+const minLength = 12;
 const binLength = 6;
 let initialStatement = {};
 let currentBin = '';
@@ -128,7 +131,6 @@ export class CardNumber extends Input {
         const card_number = this.getCardNumber(this.model.get(this.full_name));
         const card_type = this.getCardTypes(card_number)[0];
 
-        console.log(card_type);
         this.setCardTypeClassName(card_type);
         CardNumber.setCardTypeClassNameAtCards(card_type);
         CardNumber.initManageFields(card_number);
@@ -140,9 +142,24 @@ export class CardNumber extends Input {
             this.model.set('card_brand_name', card_type.card_brand_name);
         }
 
-        return card_type && Object.keys(card_type).length > 0
+        if (card_number.length === 0) {
+            this.setValidationErrorToBox(EMPTY);
+            return false;
+        }
+
+        if (card_number.length < minLength || card_number.length > maxLength) {
+            this.setValidationErrorToBox(SIZE);
+            return false;
+
+        }
+
+        if (card_type && Object.keys(card_type).length > 0
             && card_type.regular_expression.test(card_number)
-            && (!card_type.luhn_algorithm || validate(card_number));
+            && (!card_type.luhn_algorithm || validate(card_number))) {
+            this.setValidationErrorToBox(FIELD_FORMAT);
+            return true;
+        }
+        return false;
     }
 }
 
