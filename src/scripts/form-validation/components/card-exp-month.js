@@ -1,7 +1,7 @@
 import {Input} from './input';
 import {FORM_NAME} from '../constants';
 import {CardExpYear} from './card-exp-year';
-import {DEFAULT, EMPTY, FIELD_FORMAT} from "../error-labels";
+import {DEFAULT} from "../error-labels";
 
 export class CardExpMonth extends Input {
     isValid() {
@@ -10,10 +10,7 @@ export class CardExpMonth extends Input {
         );
         const expire_month = this.element.value;
 
-        if (expire_month.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
+        if (expire_month.length === 0) return false;
 
         if (expire_year.length === 0) return true;
 

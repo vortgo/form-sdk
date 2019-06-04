@@ -1,67 +1,44 @@
 {
   "card_number": {
-    "empty": "S'il vous plaît, vérifiez le numéro de carte",
-    "size": "Le numéro de carte doit comprendre de 12 à 19 caractères",
-    "field_format": "S'il vous plaît, entrez le numéro de carte valide",
     "default": "S'il vous plaît, vérifiez le numéro de carte"
   },
   "card_cvv": {
-    "empty": "S'il vous plaît, vérifiez CVV2/CVC",
-    "size": "S'il vous plaît, entrez le code de sécurité qui comprend 3 ou 4 caractères",
     "default": "S'il vous plaît, vérifiez CVV2/CVC"
   },
   "personal_id": {
-    "empty": "S'il vous plaît, vérifiez ID",
     "default": "S'il vous plaît, vérifiez ID"
   },
   "dni": {
-    "empty": "S'il vous plaît, vérifiez DNI",
     "default": "S'il vous plaît, vérifiez DNI"
   },
   "card_exp_date": {
-    "empty": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte",
-    "field_format": "Vous avez entré la date d'expiration qui est déjà passée. S'il vous plaît, vérifiez votre date d'expiration",
     "default": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte"
   },
   "card_exp_month": {
-    "empty": "Please, enter your \"card exp mont\" to complete payment",
     "default": "card_exp_month"
   },
   "card_exp_year": {
-    "empty": "Please, enter your \"card exp year\" to complete payment",
-    "size": "L'année d'expiration doit comprendre 2 ou 4 caractéres",
-    "field_format": "L'année d'expiration doit être entre {{startYear}} et {{endYear}}",
     "default": "card_exp_year"
   },
   "city": {
-    "empty": "Renseignez  la ville",
     "default": "Renseignez  la ville"
   },
   "cpf": {
-    "empty": "Renseignez le CPF",
     "default": "Renseignez le CPF"
   },
   "zip_code": {
-    "empty": "Renseignez le code postal",
-    "size": "La longueur du code postal doit être d'au moins 5 chiffres",
-    "field_format": "Le code postal n'existe pas. S'il vous plaît, entrez un code postal valide",
     "default": "Renseignez le code postal"
   },
   "card_holder": {
-    "empty": "Indiquez votre Prénom et Nom tels que figurant sur la carte.",
-    "field_format": "Invalid cardholder name. At least two words required",
     "default": "Indiquez votre Prénom et Nom tels que figurant sur la carte."
   },
   "address": {
-    "empty": "Renseignez l'adresse",
     "default": "Renseignez l'adresse"
   },
   "state": {
-    "empty": "État requis",
     "default": "État requis"
   },
   "card_pin": {
-    "empty": "S'il vous plaît, vérifiez PIN",
     "default": "S'il vous plaît, vérifiez PIN"
   }
 }

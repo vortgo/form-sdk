@@ -1,67 +1,44 @@
 {
   "card_number": {
-    "empty": "Verifique el número de la tarjeta de crédito",
-    "size": "El número de tarjeta hay que tener desde 12 hasta 19 caracteres",
-    "field_format": "Por favor, introduzca un número de tarjeta válido",
     "default": "Verifique el número de la tarjeta de crédito"
   },
   "card_cvv": {
-    "empty": "Verifique el código CVV2 (CVC)",
-    "size": "Por favor, ingrese el código de seguridad de la tarjeta de 3 o 4 dígitos",
     "default": "Verifique el código CVV2 (CVC)"
   },
   "personal_id": {
-    "empty": "Verifique el ID",
     "default": "Verifique el ID"
   },
   "dni": {
-    "empty": "Verifique el DNI",
     "default": "Verifique el DNI"
   },
   "card_exp_date": {
-    "empty": "Ingrese la fecha de vencimiento de su tarjeta",
-    "field_format": "Usted ingresó una fecha de vencimiento que ya ha pasado. Por favor revise su fecha de vencimiento",
     "default": "Ingrese la fecha de vencimiento de su tarjeta"
   },
   "card_exp_month": {
-    "empty":  "card_exp_month",
     "default": "card_exp_month"
   },
   "card_exp_year": {
-    "empty": "card_exp_year",
-    "size": "El año de caducidad hay que tener 2 o 4 caracteres",
-    "field_format": "El año de expiración hay que ser desde {{startYear}} hasta {{endYear}}",
     "default": "card_exp_year"
   },
   "city": {
-    "empty": "El campo de la población es obligatorio",
     "default": "El campo de la población es obligatorio"
   },
   "cpf": {
-    "empty": "El campo del CPF es obligatorio",
     "default": "El campo del CPF es obligatorio"
   },
   "zip_code": {
-    "empty": "El campo del código postal es obligatorio",
-    "size": "La longitud del código postal hay que tener un mínimo de 5 dígitos",
-    "field_format": "El código postal no existe. Por favor ingrese un código postal válido",
     "default": "El campo del código postal es obligatorio"
   },
   "card_holder": {
-    "empty": "Ingrese su nombre y apellido como aparecen",
-    "field_format": "Ingrese su nombre y apellido como aparecen",
     "default": "Ingrese su nombre y apellido como aparecen"
   },
   "address": {
-    "empty": "El campo de la dirección es obligatorio",
     "default": "El campo de la dirección es obligatorio"
   },
   "state": {
-    "empty": "El estado es requerido",
     "default": "El estado es requerido"
   },
   "card_pin": {
-    "empty": "Por favor, revise el PIN",
     "default": "Por favor, revise el PIN"
   }
 }

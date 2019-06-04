@@ -1,67 +1,44 @@
 {
   "card_number": {
-    "empty": "Por favor, verifique o número do cartão",
-    "size": "O número do cartão deve ter de 12 a 19 caracteres",
-    "field_format": "Por favor ingrese un número de tarjeta válido",
     "default": "Por favor, verifique o número do cartão"
   },
   "card_cvv": {
-    "empty": "Por favor, verifique CVV2 (CVC)",
-    "size": "Por favor, insira o código de segurança do cartão de 3 ou 4 dígitos",
     "default": "Por favor, verifique CVV2 (CVC)"
   },
   "personal_id": {
-    "empty": "Por favor, verifique ID",
     "default": "Por favor, verifique ID"
   },
   "dni": {
-    "empty": "Por favor, verifique DNI",
     "default": "Por favor, verifique DNI"
   },
   "card_exp_date": {
-    "empty": "Por favor, insira a data de validade do seu cartão",
-    "field_format": "Você inseriu uma data de vencimento que já passou. Por favor, verifique sua data de validade",
     "default": "Por favor, insira a data de validade do seu cartão"
   },
   "card_exp_month": {
-    "empty": "Please, enter your \"card exp mont\" to complete payment",
     "default": "card_exp_month"
   },
   "card_exp_year": {
-    "empty": "Please, enter your \"card exp year\" to complete payment",
-    "size": "O ano de expiração deve ter 2 ou 4 caracteres",
-    "field_format": "O ano de expiração deve ser de {{startYear}} a {{endYear}}",
     "default": "card_exp_year"
   },
   "city": {
-    "empty": "O campo de cidade é obrigatório",
     "default": "O campo de cidade é obrigatório"
   },
   "cpf": {
-    "empty": "O campo de CPF é obrigatório",
     "default": "O campo de CPF é obrigatório"
   },
   "zip_code": {
-    "empty": "O campo de CEP é obrigatório",
-    "size": "A extensão do código postal deve ter no mínimo 5 dígitos",
-    "field_format": "O código postal não existe. Por favor insira um código postal válido",
     "default": "O campo de CEP é obrigatório"
   },
   "card_holder": {
-    "empty": "Digite seu nome e sobrenome, como indicado no cartão.",
-    "field_format": "Digite seu nome e sobrenome, como indicado no cartão.",
     "default": "Digite seu nome e sobrenome, como indicado no cartão."
   },
   "address": {
-    "empty": "O campo de endereço é obrigatório",
     "default": "O campo de endereço é obrigatório"
   },
   "state": {
-    "empty": "Estado é obrigatório",
     "default": "Estado é obrigatório"
   },
   "card_pin": {
-    "empty": "Por favor, verifique o PIN",
     "default": "Por favor, verifique o PIN"
   }
 }

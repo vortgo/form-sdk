@@ -1,6 +1,6 @@
 import {Input} from './input';
 import romanize from 'node-romanization';
-import {DEFAULT, EMPTY, FIELD_FORMAT} from "../error-labels";
+import {DEFAULT} from "../error-labels";
 
 export class CardHolder extends Input {
 
@@ -20,11 +20,6 @@ export class CardHolder extends Input {
     isValid() {
         let full_name = this.model.get(this.full_name);
 
-        if (full_name.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
-
         if (/^\s+$/.test(full_name) || !(/\s+/.test(full_name)) ) {
             this.setValidationErrorToBox(DEFAULT);
             return false;
@@ -34,7 +29,7 @@ export class CardHolder extends Input {
             return true;
         }
 
-        this.setValidationErrorToBox(FIELD_FORMAT);
+        this.setValidationErrorToBox(DEFAULT);
         return false;
     }
 }

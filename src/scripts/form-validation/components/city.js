@@ -1,6 +1,6 @@
 import {Input} from './input';
 import romanize from 'node-romanization';
-import {DEFAULT, EMPTY} from "../error-labels";
+import {DEFAULT} from "../error-labels";
 
 
 export class City extends Input {
@@ -20,11 +20,6 @@ export class City extends Input {
     isValid() {
 
         let value = this.model.get(this.full_name);
-
-        if (value.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
 
         if(/^(?!\s).{2,32}/.test(value)){
             return true;
