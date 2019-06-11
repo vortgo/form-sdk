@@ -1,0 +1,44 @@
+{
+  "card_number": {
+    "default": "S'il vous plaît, vérifiez le numéro de carte"
+  },
+  "card_cvv": {
+    "default": "S'il vous plaît, vérifiez CVV2/CVC"
+  },
+  "personal_id": {
+    "default": "S'il vous plaît, vérifiez ID"
+  },
+  "dni": {
+    "default": "S'il vous plaît, vérifiez DNI"
+  },
+  "card_exp_date": {
+    "default": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte"
+  },
+  "card_exp_month": {
+    "default": "card_exp_month"
+  },
+  "card_exp_year": {
+    "default": "card_exp_year"
+  },
+  "city": {
+    "default": "Renseignez  la ville"
+  },
+  "cpf": {
+    "default": "Renseignez le CPF"
+  },
+  "zip_code": {
+    "default": "Renseignez le code postal"
+  },
+  "card_holder": {
+    "default": "Indiquez votre Prénom et Nom tels que figurant sur la carte."
+  },
+  "address": {
+    "default": "Renseignez l'adresse"
+  },
+  "state": {
+    "default": "État requis"
+  },
+  "card_pin": {
+    "default": "S'il vous plaît, vérifiez PIN"
+  }
+}

@@ -1,13 +1,9 @@
 import {Input} from './input';
 import romanize from 'node-romanization';
+import {DEFAULT} from "../error-labels";
 
 
 export class City extends Input {
-    isValid() {
-        return /^(?!\s).{2,32}/.test(this.model.get(this.full_name));
-    }
-
-
     constructor(...args) {
         super(...args);
         this.interceptor.interceptEvent('input', event => {
@@ -19,5 +15,17 @@ export class City extends Input {
             return false;
 
         })
+    }
+
+    isValid() {
+
+        let value = this.model.get(this.full_name);
+
+        if(/^(?!\s).{2,32}/.test(value)){
+            return true;
+        }
+
+        this.setValidationErrorToBox(DEFAULT);
+        return false;
     }
 }
