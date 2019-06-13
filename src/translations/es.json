@@ -48,9 +48,9 @@
     "default": "El campo del código postal es obligatorio"
   },
   "card_holder": {
-    "empty": "Ingrese su nombre y apellido como aparecen",
-    "field_format": "Ingrese su nombre y apellido como aparecen",
-    "default": "Ingrese su nombre y apellido como aparecen"
+    "empty": "Ingrese su nombre y apellido es como aparecen",
+    "field_format": "Ingrese su nombre y apellido es como aparecen",
+    "default": "Ingrese su nombre y apellido es como aparecen"
   },
   "address": {
     "empty": "El campo de la dirección es obligatorio",
