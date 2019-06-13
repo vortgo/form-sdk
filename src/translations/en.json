@@ -1,44 +1,44 @@
 {
   "card_number": {
-    "empty": "Please, enter your \"card number\" to complete payment",
+    "empty": "Please, enter your card number to complete payment",
     "size": "Card number should be between 12 and 19 characters",
     "field_format": "Please, enter a valid card number",
     "default": "Please, check card number"
   },
   "card_cvv": {
-    "empty": "Please, enter your \"card cvv\" to complete payment",
+    "empty": "Please, enter your card cvv to complete payment",
     "size": "Please, enter 3 or 4 digit card security code",
     "default": "Please, check CVV2 (CVC)"
   },
   "personal_id": {
-    "empty": "Please, enter your \"personal id\" to complete payment",
+    "empty": "Please, enter your personal id to complete payment",
     "default": "ID is required"
   },
   "dni": {
-    "empty": "Please, enter your \"DNI\" to complete payment",
+    "empty": "Please, enter your DNI to complete payment",
     "default": "DNI is required"
   },
   "card_exp_date": {
-    "empty": "Please, enter your \"expiry date\" to complete payment",
+    "empty": "Please, enter your expiry date to complete payment",
     "field_format": "You entered an expiration date that has already passed. Please, check your expiration date",
     "default": "Please, enter expiry date of your card"
   },
   "card_exp_month": {
-    "empty": "Please, enter your \"card exp mont\" to complete payment",
+    "empty": "Please, enter your card expiration month to complete payment",
     "default": "card_exp_month"
   },
   "card_exp_year": {
-    "empty": "Please, enter your \"card exp year\" to complete payment",
+    "empty": "Please, enter your card exp year to complete payment",
     "size": "Expiration year should be 2 or 4 characters long",
     "field_format": "Expiration year should be between {{startYear}} and {{endYear}}",
     "default": "card_exp_year"
   },
   "city": {
-    "empty": "Please, enter your \"city\" to complete payment",
+    "empty": "Please, enter your city to complete payment",
     "default": "City is required"
   },
   "cpf": {
-    "empty": "Please, enter your \"CPF\" to complete payment",
+    "empty": "Please, enter your CPF to complete payment",
     "default": "Please, check CPF"
   },
   "zip_code": {
@@ -53,15 +53,15 @@
     "default": "Name on card is required"
   },
   "address": {
-    "empty": "Please, enter your \"address\" to complete payment",
+    "empty": "Please, enter your address to complete payment",
     "default": "Address is required"
   },
   "state": {
-    "empty": "Please, enter your \"state\" to complete payment",
+    "empty": "Please, enter your state to complete payment",
     "default": "State is required"
   },
   "card_pin": {
-    "empty": "Please, enter your \"pin\" to complete payment",
+    "empty": "Please, enter your pin to complete payment",
     "default": "Please, check PIN"
   }
 }

@@ -8,10 +8,12 @@ export class ZipCode extends Input {
 
         if (value.length === 0) {
             this.setValidationErrorToBox(EMPTY);
+            return false;
         }
 
         if (value.length < minLength) {
             this.setValidationErrorToBox(SIZE);
+            return false;
         }
 
         if( /^\d{5,9}$/.test(value)){

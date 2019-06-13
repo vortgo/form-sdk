@@ -24,11 +24,11 @@
     "default": "Пожалуйста, проверьте срок действия карты"
   },
   "card_exp_month": {
-    "empty": "Please, enter your \"card exp mont\" to complete payment",
+    "empty": "Please, enter your card expiration month to complete payment",
     "default": "card_exp_month"
   },
   "card_exp_year": {
-    "empty": "Please, enter your \"card exp year\" to complete payment",
+    "empty": "Please, enter your card exp year to complete payment",
     "size": "Год действия карты должен быть длиной 2-х или 4-х символов",
     "field_format": "Год действия карты должен быть между {{startYear}} и {{endYear}}",
     "default": "card_exp_year"

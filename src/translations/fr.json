@@ -24,11 +24,11 @@
     "default": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte"
   },
   "card_exp_month": {
-    "empty": "Please, enter your \"card exp mont\" to complete payment",
+    "empty": "Please, enter your card expiration month to complete payment",
     "default": "card_exp_month"
   },
   "card_exp_year": {
-    "empty": "Please, enter your \"card exp year\" to complete payment",
+    "empty": "Please, enter your card exp year to complete payment",
     "size": "L'année d'expiration doit comprendre 2 ou 4 caractéres",
     "field_format": "L'année d'expiration doit être entre {{startYear}} et {{endYear}}",
     "default": "card_exp_year"

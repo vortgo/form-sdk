@@ -9,7 +9,6 @@ import i18next from "i18next";
 
 export class Input extends Component {
     constructor(...args) {
-
         super(...args);
 
         this.parent = getParentElement(this.element);
@@ -56,9 +55,12 @@ export class Input extends Component {
         }
     }
 
-    setValidationErrorToBox(errorType, replaceKeys = {}){
-        let message = i18next.t(getName(this.element) + '.' + errorType, replaceKeys);
-        console.log(message,i18next,getName(this.element) + '.' + errorType);
+    setValidationErrorToBox(errorType, name = '', replaceKeys = {}){
+        if (name === ''){
+            name = getName(this.element)
+        }
+
+        let message = i18next.t(name + '.' + errorType, replaceKeys);
         let childNodes = this.element.parentNode.childNodes;
         let errorBox = null;
 

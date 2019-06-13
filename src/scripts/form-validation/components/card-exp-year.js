@@ -1,6 +1,6 @@
 import {Input} from './input';
 import {FORM_NAME} from '../constants';
-import {EMPTY, FIELD_FORMAT, SIZE} from "../error-labels";
+import {DEFAULT, EMPTY, FIELD_FORMAT, SIZE} from "../error-labels";
 
 export class CardExpYear extends Input {
     constructor(...args) {
@@ -9,17 +9,6 @@ export class CardExpYear extends Input {
         this.element.addEventListener('blur', this.onBlur.bind(this));
     }
 
-    onBlur(event) {
-        this.setDirty();
-        this.prepareFormat();
-    }
-
-    prepareFormat() {
-        const expire_year = this.model.get(this.full_name);
-        this.element.value = CardExpYear.prepareFormatValue(expire_year);
-        this.app.update.bind(this.app);
-        this.setValidationMark(this.isValid());
-    }
 
     isValid() {
         const expire_year = this.element.value;
@@ -27,13 +16,8 @@ export class CardExpYear extends Input {
         const possibleLengths = [2, 4];
         const maxYearOffset = 25;
 
-        if (expire_month.length === 0) return true;
-
-        if (expire_year.length === 0) return false;
-
-        const expire_date = Date.parse([expire_month, '01', expire_year].join('/'));
-        var cur_date = new Date();
-        var max_date = new Date();
+        let cur_date = new Date(),
+            max_date = new Date();
 
         cur_date.setDate(1);
         cur_date.setHours(0);
@@ -41,26 +25,35 @@ export class CardExpYear extends Input {
         cur_date.setSeconds(0);
         cur_date.setMilliseconds(0);
 
-        max_date.setFullYear(cur_date.getFullYear() + maxYearOffset)
-
-        if (expire_date.length === 0) {
+        if (expire_year.length === 0) {
             this.setValidationErrorToBox(EMPTY);
             return false;
         }
 
-        if (possibleLengths.includes(expire_date.length)) {
+        if (!possibleLengths.includes(expire_year.length)) {
             this.setValidationErrorToBox(SIZE);
             return false;
         }
 
-        if (expire_date >= cur_date.getTime() && expire_date < max_date) {
+        if (expire_year < cur_date.getFullYear() || expire_year > cur_date.getFullYear() + maxYearOffset){
+            this.setValidationErrorToBox(FIELD_FORMAT, '', {
+                startYear: cur_date.getFullYear(),
+                endYear: max_date.getFullYear()
+            });
+            return false;
+        }
+
+        if (expire_month.length === 0) {
             return true;
         }
 
-        this.setValidationErrorToBox(FIELD_FORMAT, {
-            startYear: cur_date.getFullYear(),
-            endYear: max_date.getFullYear()
-        });
+        const expire_date = Date.parse([expire_month, '01', expire_year].join('/'));
+
+        if (expire_date >= cur_date.getTime()) {
+            return true;
+        }
+
+        this.setValidationErrorToBox(FIELD_FORMAT, 'card_exp_date');
         return false;
     }
 
