@@ -73,7 +73,10 @@ export function sendForm($form, data) {
         console.log('status error');
         showErrors($form, res.body);
         stopSpinner();
-        return;
+        const isDeclined = res.body.order && res.body.order.status && STATUS_DECLINED === res.body.order.status;
+        if (!isDeclined) {
+            return;
+        }
       }
 
       pushPostMessageWithResponse(res.body);
