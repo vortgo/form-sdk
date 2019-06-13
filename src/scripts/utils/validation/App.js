@@ -4,6 +4,9 @@ import {initComponent} from './initComponent';
 import {COMPONENTS, ELEMENTS} from './symbols';
 import i18next from "i18next";
 const enLang = require("../../../translations/en.json");
+const esLang = require("../../../translations/es.json");
+const frLang = require("../../../translations/fr.json");
+const ptLang = require("../../../translations/pt.json");
 const ruLang = require("../../../translations/ru.json");
 
 /**
@@ -88,6 +91,15 @@ export class App {
                 },
                 ru: {
                     translation: ruLang
+                },
+                es: {
+                    translation: esLang
+                },
+                fr: {
+                    translation: frLang
+                },
+                pt: {
+                    translation: ptLang
                 },
             }
         }).then();
