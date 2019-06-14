@@ -15,10 +15,10 @@
     "default": "Ingrese la fecha de vencimiento de su tarjeta"
   },
   "card_exp_month": {
-    "default": "card_exp_month"
+    "default": "Ingrese la fecha de vencimiento de su tarjeta"
   },
   "card_exp_year": {
-    "default": "card_exp_year"
+    "default": "Ingrese la fecha de vencimiento de su tarjeta"
   },
   "city": {
     "default": "El campo de la población es obligatorio"

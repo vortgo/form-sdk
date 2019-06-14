@@ -15,10 +15,10 @@
     "default": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte"
   },
   "card_exp_month": {
-    "default": "card_exp_month"
+    "default": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte"
   },
   "card_exp_year": {
-    "default": "card_exp_year"
+    "default": "S'il vous plaît, veuillez renseigner la date d'expiration de la carte"
   },
   "city": {
     "default": "Renseignez  la ville"
