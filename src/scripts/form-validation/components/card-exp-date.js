@@ -18,17 +18,19 @@ export class CardExpDate extends Input {
         cur_date.setSeconds(0);
         cur_date.setMilliseconds(0);
 
-        if (expire_date >= cur_date.getTime()) {
+        console.log(expire_date >= cur_date.getTime(), 'expire_date >= cur_date.getTime()');
+
+        if(expire_date >= cur_date.getTime()){
             this.model.set(`${FORM_NAME}.card_exp_month`, dates[0]);
             this.model.set(`${FORM_NAME}.card_exp_year`, this.prepareFormatValue(dates[1]));
         }
 
-        if(expire_date >= cur_date.getTime()){
-            return true;
-        }
+       if (expire_date >= cur_date.getTime()){
+           this.setValidationErrorToBox(DEFAULT);
+           return false;
+       }
 
-        this.setValidationErrorToBox(DEFAULT);
-        return false;
+       return true;
     }
 
 
@@ -36,7 +38,7 @@ export class CardExpDate extends Input {
         const format = '201';
         if (expire_year.length < 4 && expire_year.length > 0) {
             var missingNumber = 4 - expire_year.length;
-            expire_year = format.slice(0, missingNumber) + expire_year;
+            expire_year = format.slice(0,missingNumber) + expire_year;
         }
         return expire_year;
     }
