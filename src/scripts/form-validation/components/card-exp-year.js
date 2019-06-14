@@ -1,5 +1,6 @@
 import {Input} from './input';
 import {FORM_NAME} from '../constants';
+import {DEFAULT} from "../error-labels";
 
 export class CardExpYear extends Input {
     constructor(...args) {
@@ -23,6 +24,7 @@ export class CardExpYear extends Input {
     isValid() {
         const expire_year = this.element.value;
         const expire_month = this.model.get(`${FORM_NAME}.card_exp_month`);
+        const maxYearOffset = 25;
 
         if (expire_month.length === 0) return true;
 
@@ -30,6 +32,7 @@ export class CardExpYear extends Input {
 
         const expire_date = Date.parse([expire_month, '01', expire_year].join('/'));
         var cur_date = new Date();
+        var max_date = new Date();
 
         cur_date.setDate(1);
         cur_date.setHours(0);
@@ -37,14 +40,21 @@ export class CardExpYear extends Input {
         cur_date.setSeconds(0);
         cur_date.setMilliseconds(0);
 
-        return (expire_date >= cur_date.getTime());
+        max_date.setFullYear(cur_date.getFullYear() + maxYearOffset)
+
+        if (expire_date >= cur_date.getTime() && expire_date < max_date) {
+            return true;
+        }
+
+        this.setValidationErrorToBox(DEFAULT);
+        return false;
     }
 
     static prepareFormatValue(expire_year) {
         const format = '201';
         if (expire_year.length < 4 && expire_year.length > 0) {
             var missingNumber = 4 - expire_year.length;
-            expire_year = format.slice(0,missingNumber) + expire_year;
+            expire_year = format.slice(0, missingNumber) + expire_year;
         }
         return expire_year;
     }

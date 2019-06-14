@@ -1,0 +1,44 @@
+{
+  "card_number": {
+    "default": "Please, check card number"
+  },
+  "card_cvv": {
+    "default": "Please, check CVV2 (CVC)"
+  },
+  "personal_id": {
+    "default": "ID is required"
+  },
+  "dni": {
+    "default": "DNI is required"
+  },
+  "card_exp_date": {
+    "default": "Please, enter expiry date of your card"
+  },
+  "card_exp_month": {
+    "default": "card_exp_month"
+  },
+  "card_exp_year": {
+    "default": "card_exp_year"
+  },
+  "city": {
+    "default": "City is required"
+  },
+  "cpf": {
+    "default": "Please, check CPF"
+  },
+  "zip_code": {
+    "default": "Please, check zip code"
+  },
+  "card_holder": {
+    "default": "Name on card is required"
+  },
+  "address": {
+    "default": "Address is required"
+  },
+  "state": {
+    "default": "State is required"
+  },
+  "card_pin": {
+    "default": "Please, check PIN"
+  }
+}

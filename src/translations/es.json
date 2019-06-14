@@ -1,0 +1,44 @@
+{
+  "card_number": {
+    "default": "Verifique el número de la tarjeta de crédito"
+  },
+  "card_cvv": {
+    "default": "Verifique el código CVV2 (CVC)"
+  },
+  "personal_id": {
+    "default": "Verifique el ID"
+  },
+  "dni": {
+    "default": "Verifique el DNI"
+  },
+  "card_exp_date": {
+    "default": "Ingrese la fecha de vencimiento de su tarjeta"
+  },
+  "card_exp_month": {
+    "default": "card_exp_month"
+  },
+  "card_exp_year": {
+    "default": "card_exp_year"
+  },
+  "city": {
+    "default": "El campo de la población es obligatorio"
+  },
+  "cpf": {
+    "default": "El campo del CPF es obligatorio"
+  },
+  "zip_code": {
+    "default": "El campo del código postal es obligatorio"
+  },
+  "card_holder": {
+    "default": "Ingrese su nombre y apellido como aparecen"
+  },
+  "address": {
+    "default": "El campo de la dirección es obligatorio"
+  },
+  "state": {
+    "default": "El estado es requerido"
+  },
+  "card_pin": {
+    "default": "Por favor, revise el PIN"
+  }
+}

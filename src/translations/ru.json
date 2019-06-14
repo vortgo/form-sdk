@@ -1,0 +1,44 @@
+{
+  "card_number": {
+    "default": "Пожалуйста, проверьте номер карты"
+  },
+  "card_cvv": {
+    "default": "Пожалуйста, проверьте CVV2 (CVC) код"
+  },
+  "personal_id": {
+    "default": "Проверьте ID"
+  },
+  "dni": {
+    "default": "Пожалуйста проверьте DNI"
+  },
+  "card_exp_date": {
+    "default": "Пожалуйста, проверьте срок действия карты"
+  },
+  "card_exp_month": {
+    "default": "card_exp_month"
+  },
+  "card_exp_year": {
+    "default": "card_exp_year"
+  },
+  "city": {
+    "default": "Укажите пожалуйста город"
+  },
+  "cpf": {
+    "default": "Укажите пожалуйста CPF"
+  },
+  "zip_code": {
+    "default": "Укажите пожалуйста почтовый индекс"
+  },
+  "card_holder": {
+    "default": "Укажите имя и фамилию на латинице, как написано на карте"
+  },
+  "address": {
+    "default": "Укажите пожалуйста адрес"
+  },
+  "state": {
+    "default": "Укажите пожалуйста Штат"
+  },
+  "card_pin": {
+    "default": "Пожалуйста, проверьте PIN-код"
+  }
+}

@@ -1,7 +1,16 @@
 import {Input} from './input';
+import {DEFAULT} from "../error-labels";
 
 export class CardPIN extends Input {
     isValid() {
-        return /^\d{4}$/.test(this.model.get(this.full_name));
+
+        let value = this.model.get(this.full_name);
+
+        if(/^\d{4}$/.test(value)){
+            return true;
+        }
+
+        this.setValidationErrorToBox(DEFAULT);
+        return false;
     }
 }
