@@ -1,10 +1,14 @@
 export function showErrors($form, data) {
-
-    for (var i in data.error.messages) {
-        var tmpEl = $form.querySelector('.'+i);
-        if (tmpEl) {
-            tmpEl.classList.add('error');
-            tmpEl.classList.add('dirty');
+    if (data.error.messages.length > 0) {
+        for (var i in data.error.messages) {
+            if ('string' === typeof i) {
+                continue;
+            }
+            var tmpEl = $form.querySelector('.' + i);
+            if (tmpEl) {
+                tmpEl.classList.add('error');
+                tmpEl.classList.add('dirty');
+            }
         }
     }
 }
