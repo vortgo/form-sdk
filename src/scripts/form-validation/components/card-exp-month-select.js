@@ -1,6 +1,6 @@
 import {Input} from './input';
 import {FORM_NAME} from '../constants';
-import {EMPTY, FIELD_FORMAT} from "../error-labels";
+import {DEFAULT} from "../error-labels";
 
 export class CardExpMonthSelect extends Input {
     constructor(...args) {
@@ -27,17 +27,11 @@ export class CardExpMonthSelect extends Input {
         cur_date.setSeconds(0);
         cur_date.setMilliseconds(0);
 
-
-        if (expire_date.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
-
         if(expire_date >= cur_date.getTime()){
             return true;
         }
 
-        this.setValidationErrorToBox(FIELD_FORMAT);
+        this.setValidationErrorToBox(DEFAULT);
         return false;
     }
 }

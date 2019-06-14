@@ -1,6 +1,6 @@
 import {Input} from './input';
 import {FORM_NAME} from '../constants';
-import {EMPTY, FIELD_FORMAT, SIZE} from "../error-labels";
+import {DEFAULT, EMPTY, FIELD_FORMAT, SIZE} from "../error-labels";
 
 export class CardExpYearSelect extends Input {
     constructor(...args) {
@@ -12,7 +12,6 @@ export class CardExpYearSelect extends Input {
     isValid() {
         const expire_year = this.element.value;
         const expire_month = this.model.get(`${FORM_NAME}.card_exp_month_select`);
-        const possibleLengths = [2,4] ;
 
         if (expire_year.length === 0 && expire_month.length === 0) return false;
 
@@ -29,21 +28,12 @@ export class CardExpYearSelect extends Input {
         cur_date.setSeconds(0);
         cur_date.setMilliseconds(0);
 
-        if (expire_date.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
-
-        if (possibleLengths.includes(expire_date.length)) {
-            this.setValidationErrorToBox(SIZE);
-            return false;
-        }
 
         if(expire_date >= cur_date.getTime()){
             return true;
         }
 
-        this.setValidationErrorToBox(FIELD_FORMAT, {startYear});
+        this.setValidationErrorToBox(DEFAULT);
         return false;
     }
 

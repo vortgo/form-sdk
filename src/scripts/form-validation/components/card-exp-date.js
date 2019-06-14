@@ -1,6 +1,6 @@
 import {Input} from './input';
 import {FORM_NAME} from '../constants';
-import {EMPTY, FIELD_FORMAT} from "../error-labels";
+import {DEFAULT} from "../error-labels";
 
 export class CardExpDate extends Input {
     isValid() {
@@ -23,16 +23,11 @@ export class CardExpDate extends Input {
             this.model.set(`${FORM_NAME}.card_exp_year`, this.prepareFormatValue(dates[1]));
         }
 
-        if (date_value.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
-
         if(expire_date >= cur_date.getTime()){
             return true;
         }
 
-        this.setValidationErrorToBox(FIELD_FORMAT);
+        this.setValidationErrorToBox(DEFAULT);
         return false;
     }
 

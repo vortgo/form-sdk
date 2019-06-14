@@ -7,11 +7,6 @@ export class Address extends Input {
     isValid() {
         let value = this.model.get(this.full_name);
 
-        if (value.length === 0) {
-            this.setValidationErrorToBox(EMPTY);
-            return false;
-        }
-
         if(/^(?!\s).{2,32}/.test(value)){
             return true;
         }
