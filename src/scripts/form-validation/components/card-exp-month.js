@@ -27,7 +27,6 @@ export class CardExpMonth extends Input {
             return true;
         }
 
-        this.setValidationErrorToBox(DEFAULT);
         return false;
     }
 }

@@ -41,8 +41,7 @@ export class CardExpYear extends Input {
         if (expire_date >= cur_date.getTime()) {
             return true;
         }
-
-        this.setValidationErrorToBox(DEFAULT);
+        
         return false;
     }
 
