@@ -18,12 +18,14 @@ export class CardExpDate extends Input {
         cur_date.setSeconds(0);
         cur_date.setMilliseconds(0);
 
+        console.log(expire_date >= cur_date.getTime(), 'expire_date >= cur_date.getTime()');
+
         if (expire_date >= cur_date.getTime()) {
             this.model.set(`${FORM_NAME}.card_exp_month`, dates[0]);
             this.model.set(`${FORM_NAME}.card_exp_year`, this.prepareFormatValue(dates[1]));
         }
 
-        if(expire_date >= cur_date.getTime()){
+        if (expire_date >= cur_date.getTime()) {
             return true;
         }
 

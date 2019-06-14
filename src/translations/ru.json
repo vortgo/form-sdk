@@ -15,10 +15,10 @@
     "default": "Пожалуйста, проверьте срок действия карты"
   },
   "card_exp_month": {
-    "default": "card_exp_month"
+    "default": "Пожалуйста, проверьте срок действия карты"
   },
   "card_exp_year": {
-    "default": "card_exp_year"
+    "default": "Пожалуйста, проверьте срок действия карты"
   },
   "city": {
     "default": "Укажите пожалуйста город"

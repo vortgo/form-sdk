@@ -15,10 +15,10 @@
     "default": "Please, enter expiry date of your card"
   },
   "card_exp_month": {
-    "default": "card_exp_month"
+    "default": "Please, enter expiry date of your card"
   },
   "card_exp_year": {
-    "default": "card_exp_year"
+    "default": "Please, enter expiry date of your card"
   },
   "city": {
     "default": "City is required"

@@ -6,7 +6,7 @@ import {DEFAULT} from "../error-labels";
 export class CardExpMonth extends Input {
     isValid() {
         const expire_year = CardExpYear.prepareFormatValue(
-          this.model.get(`${FORM_NAME}.card_exp_year`)
+            this.model.get(`${FORM_NAME}.card_exp_year`)
         );
         const expire_month = this.element.value;
 
@@ -27,7 +27,6 @@ export class CardExpMonth extends Input {
             return true;
         }
 
-        this.setValidationErrorToBox(DEFAULT);
         return false;
     }
 }

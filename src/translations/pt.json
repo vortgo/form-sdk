@@ -15,10 +15,10 @@
     "default": "Por favor, insira a data de validade do seu cartão"
   },
   "card_exp_month": {
-    "default": "card_exp_month"
+    "default": "Por favor, insira a data de validade do seu cartão"
   },
   "card_exp_year": {
-    "default": "card_exp_year"
+    "default": "Por favor, insira a data de validade do seu cartão"
   },
   "city": {
     "default": "O campo de cidade é obrigatório"
