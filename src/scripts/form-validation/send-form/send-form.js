@@ -126,7 +126,7 @@ export function sendForm($form, data) {
             case STATUS_AUTH_FAILED:
                 console.log('order auth_failed');
                 if (res.body.redirect_url) {
-                    trackProcessing(STATUS_AUTH_OK);
+                    trackProcessing(STATUS_AUTH_FAILED);
                     authFailed(res.body.redirect_url);
                 }
                 stopSpinner();
@@ -250,7 +250,7 @@ function statusRequest(checkSum) {
             case STATUS_AUTH_FAILED:
                 console.log('order auth_failed');
                 if (res.body.redirect_url) {
-                    trackProcessing(STATUS_AUTH_OK);
+                    trackProcessing(STATUS_AUTH_FAILED);
                     authFailed(res.body.redirect_url);
                 }
                 stopSpinner();
