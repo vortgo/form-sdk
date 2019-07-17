@@ -40,7 +40,6 @@ export class Form extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        console.log(this.model.params);
 
         if (this.formIsValid()) {
             sendForm(this.element, this.model.params);
