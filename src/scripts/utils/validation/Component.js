@@ -13,4 +13,8 @@ export class Component {
     // implemented in concrete classes
   }
 
+    getValue() {
+        return this.element.value;
+    }
+
 }

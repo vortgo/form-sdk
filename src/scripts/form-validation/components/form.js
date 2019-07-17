@@ -24,7 +24,7 @@ export class Form extends Component {
         this.invalidFields = [];
 
         components.forEach(component => {
-            component.model.set(component.full_name, component.element.value);
+            component.model.set(component.full_name, component.getValue());
             component.dirty = true;
             component.setValidationMark && component.setValidationMark(component.isValid())
             component.setDirty && component.setDirty()
@@ -40,6 +40,7 @@ export class Form extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
+        console.log(this.model.params);
 
         if (this.formIsValid()) {
             sendForm(this.element, this.model.params);
